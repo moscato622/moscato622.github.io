@@ -106,7 +106,7 @@
     _video.width  = window.innerWidth;
     _video.height = window.innerHeight;
 
-    window.addEventListener( 'resize', onWindowResize, false );
+
 
 
     var _videoPlaying= function(){
@@ -152,22 +152,6 @@
         _colors= px;
     };
     
-   function onWindowResize() {
-
-				_tmpCtx.width= _w.innerWidth;
-                _tmpCtx.height= _w.innerHeight;
-                canvas.width  = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    _video.width  = window.innerWidth;
-    _video.height = window.innerHeight;
-
-    if(!_width){
-            _width= _w.innerWidth;
-            _height= _w.innerHeight;
-        }
-
-			}
 
 var video = document.getElementById('video');
 var constraints = { audio:false, video:{width:_width,height:_height,facingMode:"environment"} }
