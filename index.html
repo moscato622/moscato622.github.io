@@ -128,7 +128,7 @@
         _tmpCtx = _d.createElement('canvas'),
         _colors = [0, 0, 200],
         _colors2 = [0, 0, 200],
-        _range  = 30;
+        _range  = 200;
     
     _tmpCtx.width=_w.innerWidth;
     _tmpCtx.height= _w.innerHeight;
@@ -224,9 +224,9 @@ navigator.mediaDevices.getUserMedia(constraints)
     
     setInterval(_videoPlaying, 60);
 
-                _d.getElementById('range').addEventListener('change', function(){
-                    _range= 255 - this.value;
-                });
+                // _d.getElementById('range').addEventListener('change', function(){
+                //     _range= 255 - this.value;
+                // });
                 _canvas.addEventListener('click', _videoClick);    
   };
 })
