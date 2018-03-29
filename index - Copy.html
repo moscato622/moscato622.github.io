@@ -123,12 +123,10 @@
         _n      = navigator,
         _w      = window,
         _width  = 0,
-        _change = true,
         _height = 0,
         _tmpCtx = _d.createElement('canvas'),
         _colors = [0, 0, 200],
-        _colors2 = [0, 0, 200],
-        _range  = 30;
+        _range  = 80;
     
     _tmpCtx.width=_w.innerWidth;
     _tmpCtx.height= _w.innerHeight;
@@ -172,15 +170,6 @@
             {
                 frame.data[l*4+3]= 0;
             }
-
-            if(Math.abs(r - _colors2[0]) < 250 - _range
-                &&
-               Math.abs(g - _colors2[1]) < 250 - _range
-                &&
-               Math.abs(b - _colors2[2]) < 250 - _range)
-            {
-                frame.data[l*4+3]= 0;
-            }
         }
         
         _ctx.putImageData(frame, 0, 0);
@@ -190,21 +179,8 @@
         var line= evt.offsetY,
             col= evt.offsetX,
             frame= _ctx.getImageData(col, line, 1, 1),
-            //px= [frame.data[0], frame.data[1], frame.data[2]];
-
-            if(_change){
-        var px= [frame.data[0], frame.data[1], frame.data[2]];
-            _colors= px;
-        //_p.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
-        _change = false;
-      }else{
-        var px2= [frame.data[0], frame.data[1], frame.data[2]];
-        _colors2= px2;
-        //_p2.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
-        _change = true;
-      }
-
-        //_colors= px;
+            px= [frame.data[0], frame.data[1], frame.data[2]];
+        _colors= px;
     };
     
    
