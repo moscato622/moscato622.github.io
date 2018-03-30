@@ -30,13 +30,13 @@
             
             canvas{
                 display: block;
-                border: solid 1px red;
+                /*border: solid 1px red;*/
                 background-image: url(bg1.png);
                 background-size: 100% 100%;
                 margin: auto;
             }
             video{
-                border: solid 1px red;
+                /*border: solid 1px red;*/
                 position: absolute;
                 left: -999px;
             }
@@ -51,25 +51,27 @@
         <!-- chromakey div -->
         <div style="text-align: center;">
             
-            <input type="button" value="Start"
-                   onclick="window.ck.start();" /><br/>
+            <!-- <input type="button" value="Start"
+                   onclick="window.ck.start();" /><br/> -->
             
             
             <video id="video" style="position: absolute; top: -999px;" muted autoplay playsinline>Video</video>
-            <canvas id="canvas" width="800" height="600" 
+            <canvas id="canvas" 
+   style="position: absolute; left: 0; top: 0; z-index: 10;"></canvas>
+      <canvas id="canvas2" 
    style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
             
-            <input id="range" type="range" value="175" min="0" max="255" />
+            <!-- <input id="range" type="range" value="175" min="0" max="255" /> -->
             
         </div>
          
         <!-- Gyro with Panaroma -->
 		<div id="container"></div>
 
-		<div id="info">
+		<!-- <div id="info">
 			<a href="http://threejs.org" target="_blank" rel="noopener">three.js</a> - equirectangular panorama demo with DeviceOrientation controls.
 			photo by <a href="http://www.flickr.com/photos/jonragnarsson/2294472375/" target="_blank" rel="noopener">Jón Ragnarsson</a>.
-		</div>
+		</div> -->
 
 		<script src="build/three.js"></script>
 		<script src="js_build/controls/DeviceOrientationControls.js"></script>
@@ -80,6 +82,38 @@
 
         <script>
         
+
+    //     init();
+            
+
+    //         function init() {
+
+                
+    //             //
+
+    //             window.addEventListener( 'resize', onWindowResize, false );
+
+
+    //         }
+
+    //         function onWindowResize() {
+    //            var _w      = window,
+    //             _width  = 0,
+    //             _height = 0;
+
+    //             _tmpCtx.width=_w.innerWidth;
+    // _tmpCtx.height= _w.innerHeight;
+    // _tmpCtx= _tmpCtx.getContext('2d');
+    
+    // canvas.width  = window.innerWidth;
+    // canvas.height = window.innerHeight;
+
+    // _video.width  = window.innerWidth;
+    // _video.height = window.innerHeight;
+
+    //         }
+
+
             
             window.ck= (function(_d){
 
@@ -89,13 +123,15 @@
         _n      = navigator,
         _w      = window,
         _width  = 0,
+        _change = true,
         _height = 0,
         _tmpCtx = _d.createElement('canvas'),
         _colors = [0, 0, 200],
-        _range  = 80;
+        _colors2 = [0, 0, 200],
+        _range  = 200;
     
-    _tmpCtx.width= _canvas.offsetWidth;
-    _tmpCtx.height= _canvas.offsetHeight;
+    _tmpCtx.width=_w.innerWidth;
+    _tmpCtx.height= _w.innerHeight;
     _tmpCtx= _tmpCtx.getContext('2d');
     
     canvas.width  = window.innerWidth;
@@ -114,8 +150,8 @@
             r, g, b;
         
         if(!_width){
-            _width= _video.offsetWidth;
-            _height= _video.offsetHeight;
+            _width= _w.innerWidth;
+            _height= _w.innerHeight;
         }
         
         _tmpCtx.drawImage(_video, 0, 0, _width, _height);
@@ -136,6 +172,15 @@
             {
                 frame.data[l*4+3]= 0;
             }
+
+            if(Math.abs(r - _colors2[0]) < 250 - _range
+                &&
+               Math.abs(g - _colors2[1]) < 250 - _range
+                &&
+               Math.abs(b - _colors2[2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            }
         }
         
         _ctx.putImageData(frame, 0, 0);
@@ -144,14 +189,27 @@
     var _videoClick= function(evt){
         var line= evt.offsetY,
             col= evt.offsetX,
-            frame= _ctx.getImageData(col, line, 1, 1),
-            px= [frame.data[0], frame.data[1], frame.data[2]];
-        _colors= px;
+            frame= _ctx.getImageData(col, line, 1, 1);
+            //px= [frame.data[0], frame.data[1], frame.data[2]];
+
+            if(_change){
+        var px= [frame.data[0], frame.data[1], frame.data[2]];
+            _colors= px;
+        //_p.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
+        _change = false;
+      }else{
+        var px2= [frame.data[0], frame.data[1], frame.data[2]];
+        _colors2= px2;
+        //_p2.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
+        _change = true;
+      }
+
+        //_colors= px;
     };
     
    
 var video = document.getElementById('video');
-var constraints = { audio:false, video:{width:640,height:480,facingMode:"environment"} }
+var constraints = { audio:false, video:{width:1920,height:1080,facingMode:"environment"} }
 
 //older browsers might not implement mediaDevices
 if(navigator.mediaDevices === undefined) {
@@ -166,9 +224,9 @@ navigator.mediaDevices.getUserMedia(constraints)
     
     setInterval(_videoPlaying, 60);
 
-                _d.getElementById('range').addEventListener('change', function(){
-                    _range= 255 - this.value;
-                });
+                // _d.getElementById('range').addEventListener('change', function(){
+                //     _range= 255 - this.value;
+                // });
                 _canvas.addEventListener('click', _videoClick);    
   };
 })
@@ -212,16 +270,16 @@ video.addEventListener('canplay', function(ev){
 				geometry.scale( - 1, 1, 1 );
 
 				var material = new THREE.MeshBasicMaterial( {
-					map: new THREE.TextureLoader().load( 'textures/2294472375_24a3b8ef46_o' )
+					map: new THREE.TextureLoader().load( 'textures/2294472375_24a3b8ef46_o.jpg' )
 				} );
 
 				var mesh = new THREE.Mesh( geometry, material );
 				scene.add( mesh );
 
-				var helperGeometry = new THREE.BoxBufferGeometry( 100, 100, 100, 4, 4, 4 );
-				var helperMaterial = new THREE.MeshBasicMaterial( { color: 0xff00ff, wireframe: true } );
-				var helper = new THREE.Mesh( helperGeometry, helperMaterial );
-				scene.add( helper );
+				//var helperGeometry = new THREE.BoxBufferGeometry( 100, 100, 100, 4, 4, 4 );
+				//var helperMaterial = new THREE.MeshBasicMaterial( { color: 0xff00ff, wireframe: true } );
+				//var helper = new THREE.Mesh( helperGeometry, helperMaterial );
+				//scene.add( helper );
 
 				//
 
