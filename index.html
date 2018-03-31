@@ -238,6 +238,20 @@
         
         _ctx.putImageData(frame, 0, 0);
     };
+
+    window.addEventListener('resize', onResize)
+      function onResize(){
+
+        _tmpCtx.width=_w.innerWidth;
+        _tmpCtx.height= _w.innerHeight;
+        _tmpCtx= _tmpCtx.getContext('2d');
+    
+        canvas.width  = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+       _video.width  = window.innerWidth;
+       _video.height = window.innerHeight;
+      }
     
     var _videoClick= function(evt){
         var line= evt.offsetY,
