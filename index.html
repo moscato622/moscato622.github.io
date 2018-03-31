@@ -271,31 +271,18 @@
     };
     
    
-var video = document.createElement('video');
-  var constraints = { audio:false, video:{width:1920,height:1080,facingMode:"environment"} }
+var video = document.getElementById('video');
+var constraints = { audio:false, video:{width:1920,height:1080,facingMode:"environment"} }
 
-
-  // check API is available
-  if (navigator.mediaDevices === undefined 
-      || navigator.mediaDevices.enumerateDevices === undefined 
-      || navigator.mediaDevices.getUserMedia === undefined  ){
-    if( navigator.mediaDevices === undefined )        var fctName = 'navigator.mediaDevices'
-    else if( navigator.mediaDevices.enumerateDevices === undefined )  var fctName = 'navigator.mediaDevices.enumerateDevices'
-    else if( navigator.mediaDevices.getUserMedia === undefined )    var fctName = 'navigator.mediaDevices.getUserMedia'
-    else console.assert(false)
-    onError({
-      name: '',
-      message: 'WebRTC issue-! '+fctName+' not present in your browser'
-    })
-    return null
-  }
-
-// navigator.mediaDevices.enumerateDevices().then(function(devices) {
-                
-    // get a device which satisfy the constraints
-    navigator.mediaDevices.getUserMedia(constraints).then(function success(mediaStream) {
-      // set the .src of the domElement
-      video.srcObject = mediaStream;
+//older browsers might not implement mediaDevices
+if(navigator.mediaDevices === undefined) {
+  console.log("navigator.mediaDevices === undefined");
+  alert("navigator.mediaDevices === undefined");
+}
+navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;// || navigator.msGetUserMedia || navigator.oGetUserMedia;
+navigator.mediaDevices.getUserMedia(constraints)
+.then(function(mediaStream) { //start the stream
+  video.srcObject = mediaStream;
   video.onloadedmetadata = function(e) {
     video.play();
     
@@ -303,9 +290,9 @@ var video = document.createElement('video');
 
                 // _d.getElementById('range').addEventListener('change', function(){
                 //     _range= 255 - this.value;
-                // });    
-
-                _canvas.addEventListener('click', _videoClick);  };
+                // });
+                _canvas.addEventListener('click', _videoClick);    
+  };
 })
 .catch(function(err) { //error
   console.log("mediaDevices: " + err.name + " -> " + err.message); 
@@ -352,7 +339,7 @@ video.addEventListener('canplay', function(ev){
 				geometry.scale( - 1, 1, 1 );
 
 				var material = new THREE.MeshBasicMaterial( {
-					map: new THREE.TextureLoader().load( 'textures/texture' )
+					map: new THREE.TextureLoader().load( 'textures/texture.jpg' )
 				} );
 
 				var mesh = new THREE.Mesh( geometry, material );
