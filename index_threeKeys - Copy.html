@@ -238,6 +238,19 @@
         
         _ctx.putImageData(frame, 0, 0);
     };
+
+    // window.addEventListener('resize', onResize)
+    //   function onResize(){
+
+    //     _tmpCtx.width=_w.innerHeight;
+    //     _tmpCtx.height= _w.innerWidth;
+    //     _tmpCtx= _tmpCtx.getContext('2d');
+    //     canvas.width  = window.innerHeight;
+    //     canvas.height = window.innerWidth;
+
+    //    // _video.width  = window.innerWidth;
+    //    // _video.height = window.innerHeight;
+    //   }
     
     var _videoClick= function(evt){
         var line= evt.offsetY,
@@ -279,6 +292,7 @@ if(navigator.mediaDevices === undefined) {
   console.log("navigator.mediaDevices === undefined");
   alert("navigator.mediaDevices === undefined");
 }
+navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;// || navigator.msGetUserMedia || navigator.oGetUserMedia;
 navigator.mediaDevices.getUserMedia(constraints)
 .then(function(mediaStream) { //start the stream
   video.srcObject = mediaStream;
@@ -338,7 +352,7 @@ video.addEventListener('canplay', function(ev){
 				geometry.scale( - 1, 1, 1 );
 
 				var material = new THREE.MeshBasicMaterial( {
-					map: new THREE.TextureLoader().load( 'textures/bg.jpg' )
+					map: new THREE.TextureLoader().load( 'textures/texture.jpg' )
 				} );
 
 				var mesh = new THREE.Mesh( geometry, material );
