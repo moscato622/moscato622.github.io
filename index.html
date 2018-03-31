@@ -30,7 +30,7 @@
             
             canvas{
                 display: block;
-                /*border: solid 1px red;*/
+                border: solid 1px red;
                 background-image: url(bg1.png);
                 background-size: 100% 100%;
                 margin: auto;
@@ -123,11 +123,12 @@
         _n      = navigator,
         _w      = window,
         _width  = 0,
-        _change = true,
+        _change = 1,
         _height = 0,
         _tmpCtx = _d.createElement('canvas'),
         _colors = [0, 0, 200],
         _colors2 = [0, 0, 200],
+        _colors3 = [0, 0, 200],
         _range  = 200;
     
     _tmpCtx.width=_w.innerWidth;
@@ -140,7 +141,50 @@
     _video.width  = window.innerWidth;
     _video.height = window.innerHeight;
 
+    
+       //  var
+       //  // Obtain a reference to the canvas element using its id.
+       //  htmlCanvas = document.getElementById('canvas'),
+       //  _video  = _d.getElementById('video'),
+       //  _ctx    = _canvas.getContext('2d'),
+       //  _tmpCtx = _d.createElement('canvas'),
+       //  // Obtain a graphics context on the canvas element for drawing.
+       //  context = htmlCanvas.getContext('2d');
 
+       // // Start listening to resize events and draw canvas.
+       // initialize();
+
+       // function initialize() {
+       //     // Register an event listener to call the resizeCanvas() function 
+       //     // each time the window is resized.
+       //     window.addEventListener('resize', resizeCanvas, false);
+       //     // Draw canvas border for the first time.
+       //     resizeCanvas();
+       //  }
+
+       //  // Display custom canvas. In this case it's a blue, 5 pixel 
+       //  // border that resizes along with the browser window.
+       //  function redraw() {
+       //      _video.width  = window.innerWidth;
+       //      _video.height = window.innerHeight;
+       //     // context.strokeStyle = 'blue';
+       //     // context.lineWidth = '5';
+       //     // context.strokeRect(0, 0, window.innerWidth, window.innerHeight);
+       //  }
+
+       //  // Runs each time the DOM window resize event fires.
+       //  // Resets the canvas dimensions to match window,
+       //  // then draws the new borders accordingly.
+       //  function resizeCanvas() {
+       //      htmlCanvas.width = window.innerWidth;
+       //      htmlCanvas.height = window.innerHeight;
+
+    
+
+
+       //      redraw();
+       //  }
+    
 
     var _videoPlaying= function(){
         
@@ -181,6 +225,15 @@
             {
                 frame.data[l*4+3]= 0;
             }
+
+            if(Math.abs(r - _colors3[0]) < 250 - _range
+                &&
+               Math.abs(g - _colors3[1]) < 250 - _range
+                &&
+               Math.abs(b - _colors3[2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            }
         }
         
         _ctx.putImageData(frame, 0, 0);
@@ -192,16 +245,23 @@
             frame= _ctx.getImageData(col, line, 1, 1);
             //px= [frame.data[0], frame.data[1], frame.data[2]];
 
-            if(_change){
+            if(_change == 3){
         var px= [frame.data[0], frame.data[1], frame.data[2]];
             _colors= px;
         //_p.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
-        _change = false;
-      }else{
+        _change = 1;
+      } if(_change == 2){
         var px2= [frame.data[0], frame.data[1], frame.data[2]];
         _colors2= px2;
         //_p2.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
-        _change = true;
+        _change = 3;
+      }
+
+      if(_change == 1){
+        var px3= [frame.data[0], frame.data[1], frame.data[2]];
+        _colors3= px3;
+        //_p2.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
+        _change = 2;
       }
 
         //_colors= px;
@@ -247,6 +307,11 @@ video.addEventListener('canplay', function(ev){
             
         </script>
         
+    
+    
+
+
+
 
 		<script>
 
