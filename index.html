@@ -234,23 +234,33 @@
             {
                 frame.data[l*4+3]= 0;
             }
+
+            if (window.matchMedia("(orientation: portrait)").matches) {
+            _width= _w.innerWidth;
+            _height= _w.innerHeight;
+}
+
+if (window.matchMedia("(orientation: landscape)").matches) {
+            _width= _w.innerWidth;
+            _height= _w.innerHeight;
+}
         }
         
         _ctx.putImageData(frame, 0, 0);
     };
 
-    window.addEventListener('resize', onResize)
-      function onResize(){
+    // window.addEventListener('resize', onResize)
+    //   function onResize(){
 
-        _tmpCtx.width=_w.innerHeight;
-        _tmpCtx.height= _w.innerWidth;
-        _tmpCtx= _tmpCtx.getContext('2d');
-        canvas.width  = window.innerHeight;
-        canvas.height = window.innerWidth;
+    //     _tmpCtx.width=_w.innerHeight;
+    //     _tmpCtx.height= _w.innerWidth;
+    //     _tmpCtx= _tmpCtx.getContext('2d');
+    //     canvas.width  = window.innerHeight;
+    //     canvas.height = window.innerWidth;
 
-       // _video.width  = window.innerWidth;
-       // _video.height = window.innerHeight;
-      }
+    //    // _video.width  = window.innerWidth;
+    //    // _video.height = window.innerHeight;
+    //   }
     
     var _videoClick= function(evt){
         var line= evt.offsetY,
