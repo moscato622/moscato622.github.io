@@ -194,8 +194,8 @@
             r, g, b;
         
         if(!_width){
-            _width= window.innerWidth;
-            _height= window.innerWidth *(_video.offsetHeight/_canvas.offsetWidth);
+            _width= _w.innerWidth;
+            _height= _w.innerWidth *(_video.offsetHeight/_canvas.offsetWidth);
         }
         
         _tmpCtx.drawImage(_video, 0, 0, _width, _height);
