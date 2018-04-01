@@ -138,8 +138,8 @@
     canvas.width  = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    _video.width  = window.innerWidth;
-    _video.height = window.innerHeight;
+    // _video.width  = window.innerWidth;
+    // _video.height = window.innerHeight;
 
     
        //  var
@@ -194,8 +194,8 @@
             r, g, b;
         
         if(!_width){
-            _width= _w.innerWidth;
-            _height= _w.innerHeight;
+            _width= _video.offsetWidth;
+            _height= _video.offsetHeight;
         }
         
         _tmpCtx.drawImage(_video, 0, 0, _width, _height);
