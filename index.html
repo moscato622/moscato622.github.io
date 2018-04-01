@@ -132,8 +132,6 @@
         _colors4 = [52, 156, 32],
         _colors5 = [85, 192, 87],
         _colors6 = [137, 255, 132],
-        _colors7 = [29, 188, 123],
-        _colors8 = [16, 94, 51],
         _range  = 200;
     
     _tmpCtx.width=_w.innerWidth;
@@ -263,24 +261,6 @@
                Math.abs(g - _colors6[1]) < 50
                 &&
                Math.abs(b - _colors6[2]) < 50)
-            {
-                frame.data[l*4+3]= 0;
-            }
-
-            if(Math.abs(r - _colors7[0]) < 250 - _range
-                &&
-               Math.abs(g - _colors7[1]) < 250 - _range
-                &&
-               Math.abs(b - _colors7[2]) < 250 - _range)
-            {
-                frame.data[l*4+3]= 0;
-            }
-          
-           if(Math.abs(r - _colors8[0]) < 14
-                &&
-               Math.abs(g - _colors8[1]) < 14
-                &&
-               Math.abs(b - _colors8[2]) < 14)
             {
                 frame.data[l*4+3]= 0;
             }
