@@ -126,9 +126,12 @@
         _change = 1,
         _height = 0,
         _tmpCtx = _d.createElement('canvas'),
-        _colors = [0, 0, 200],
-        _colors2 = [0, 0, 200],
-        _colors3 = [0, 0, 200],
+        _colors = [81, 225, 139],
+        _colors2 = [89, 225, 192],
+        _colors3 = [29, 188, 123],
+        _colors4 = [52, 156, 32],
+        _colors5 = [85, 192, 87],
+        _colors6 = [137, 255, 132],
         _range  = 200;
     
     _tmpCtx.width=_w.innerWidth;
@@ -208,29 +211,56 @@
             g= data[l*4+1];
             b= data[l*4+2];
             
-            if(Math.abs(r - _colors[0]) < 250 - _range
+            if(Math.abs(r - _colors[0]) < 50
                 &&
-               Math.abs(g - _colors[1]) < 250 - _range
+               Math.abs(g - _colors[1]) < 50
                 &&
-               Math.abs(b - _colors[2]) < 250 - _range)
+               Math.abs(b - _colors[2]) < 50)
             {
                 frame.data[l*4+3]= 0;
             }
 
-            if(Math.abs(r - _colors2[0]) < 250 - _range
+            if(Math.abs(r - _colors2[0]) < 50
                 &&
-               Math.abs(g - _colors2[1]) < 250 - _range
+               Math.abs(g - _colors2[1]) < 50
                 &&
-               Math.abs(b - _colors2[2]) < 250 - _range)
+               Math.abs(b - _colors2[2]) < 50)
             {
                 frame.data[l*4+3]= 0;
             }
 
-            if(Math.abs(r - _colors3[0]) < 250 - _range
+            if(Math.abs(r - _colors3[0]) < 50
                 &&
-               Math.abs(g - _colors3[1]) < 250 - _range
+               Math.abs(g - _colors3[1]) < 50
                 &&
-               Math.abs(b - _colors3[2]) < 250 - _range)
+               Math.abs(b - _colors3[2]) < 50)
+            {
+                frame.data[l*4+3]= 0;
+            }
+
+            if(Math.abs(r - _colors4[0]) < 50
+                &&
+               Math.abs(g - _colors4[1]) < 50
+                &&
+               Math.abs(b - _colors4[2]) < 50)
+            {
+                frame.data[l*4+3]= 0;
+            }
+
+            if(Math.abs(r - _colors5[0]) < 50
+                &&
+               Math.abs(g - _colors5[1]) < 50
+                &&
+               Math.abs(b - _colors5[2]) < 50)
+            {
+                frame.data[l*4+3]= 0;
+            }
+
+            if(Math.abs(r - _colors6[0]) < 50
+                &&
+               Math.abs(g - _colors6[1]) < 50
+                &&
+               Math.abs(b - _colors6[2]) < 50)
             {
                 frame.data[l*4+3]= 0;
             }
@@ -238,47 +268,34 @@
         
         _ctx.putImageData(frame, 0, 0);
     };
-
-    // window.addEventListener('resize', onResize)
-    //   function onResize(){
-
-    //     _tmpCtx.width=_w.innerHeight;
-    //     _tmpCtx.height= _w.innerWidth;
-    //     _tmpCtx= _tmpCtx.getContext('2d');
-    //     canvas.width  = window.innerHeight;
-    //     canvas.height = window.innerWidth;
-
-    //    // _video.width  = window.innerWidth;
-    //    // _video.height = window.innerHeight;
-    //   }
     
     var _videoClick= function(evt){
-        var line= evt.offsetY,
-            col= evt.offsetX,
-            frame= _ctx.getImageData(col, line, 1, 1);
-            //px= [frame.data[0], frame.data[1], frame.data[2]];
+      //   var line= evt.offsetY,
+      //       col= evt.offsetX,
+      //       frame= _ctx.getImageData(col, line, 1, 1);
+      //       //px= [frame.data[0], frame.data[1], frame.data[2]];
 
-            if(_change == 3){
-        var px= [frame.data[0], frame.data[1], frame.data[2]];
-            _colors= px;
-        //_p.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
-        _change = 1;
-      } else{
+      //       if(_change == 3){
+      //   var px= [frame.data[0], frame.data[1], frame.data[2]];
+      //       _colors= px;
+      //   //_p.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
+      //   _change = 1;
+      // } else{
         
-              if(_change == 2){
-        var px2= [frame.data[0], frame.data[1], frame.data[2]];
-        _colors2= px2;
-        //_p2.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
-        _change = 3;
-      }else
+      //         if(_change == 2){
+      //   var px2= [frame.data[0], frame.data[1], frame.data[2]];
+      //   _colors2= px2;
+      //   //_p2.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
+      //   _change = 3;
+      // }else
 
-      if(_change == 1){
-        var px3= [frame.data[0], frame.data[1], frame.data[2]];
-        _colors3= px3;
-        //_p3.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
-        _change = 2;
-      }
-      }
+      // if(_change == 1){
+      //   var px3= [frame.data[0], frame.data[1], frame.data[2]];
+      //   _colors3= px3;
+      //   //_p3.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
+      //   _change = 2;
+      // }
+      // }
 
         //_colors= px;
     };
@@ -292,7 +309,6 @@ if(navigator.mediaDevices === undefined) {
   console.log("navigator.mediaDevices === undefined");
   alert("navigator.mediaDevices === undefined");
 }
-navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;// || navigator.msGetUserMedia || navigator.oGetUserMedia;
 navigator.mediaDevices.getUserMedia(constraints)
 .then(function(mediaStream) { //start the stream
   video.srcObject = mediaStream;
@@ -352,7 +368,7 @@ video.addEventListener('canplay', function(ev){
 				geometry.scale( - 1, 1, 1 );
 
 				var material = new THREE.MeshBasicMaterial( {
-					map: new THREE.TextureLoader().load( 'textures/texture.jpg' )
+					map: new THREE.TextureLoader().load( 'textures/bg.jpg' )
 				} );
 
 				var mesh = new THREE.Mesh( geometry, material );
