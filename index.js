@@ -60,26 +60,33 @@
     document.body.classList.add('tooltip-fallback');
   }
 
-  // Viewer options.
   var viewerOpts = {
+    stageType: 'webgl',
     controls: {
       mouseViewMode: data.settings.mouseViewMode
     }
   };
 
   // Initialize viewer.
-  var viewer = new Marzipano.Viewer(panoElement, viewerOpts);
+var viewerOpts = { stageType: 'webgl' };
+var viewer = new Marzipano.Viewer(document.getElementById('pano'), viewerOpts);
+
+// Create asset and source.
+var asset = new VideoAsset();
+var source = new Marzipano.SingleAssetSource(asset);
+ 
 
   // Create scenes.
   var scenes = data.scenes.map(function(data) {
     var urlPrefix = "tiles";
-    var source = Marzipano.ImageUrlSource.fromString(
-      urlPrefix + "/" + data.id + "/{z}/{f}/{y}/{x}.jpg",
-      { cubeMapPreviewUrl: urlPrefix + "/" + data.id + "/preview.jpg" });
-    var geometry = new Marzipano.CubeGeometry(data.levels);
 
-    var limiter = Marzipano.RectilinearView.limit.traditional(data.faceSize, 100*Math.PI/180, 120*Math.PI/180);
-    var view = new Marzipano.RectilinearView(data.initialViewParameters, limiter);
+    // var source = Marzipano.ImageUrlSource.fromString(
+    //   urlPrefix + "/" + data.id + "/{z}/{f}/{y}/{x}.jpg",
+    //   { cubeMapPreviewUrl: urlPrefix + "/" + data.id + "/preview.jpg" });
+    var geometry = new Marzipano.EquirectGeometry([ { width: 1 } ]);
+
+    var limiter = Marzipano.RectilinearView.limit.vfov(90*Math.PI/180, 90*Math.PI/180);
+    var view = new Marzipano.RectilinearView({ fov: Math.PI/2 }, limiter);
 
     var scene = viewer.createScene({
       source: source,
@@ -329,9 +336,9 @@
     text.classList.add('info-hotspot-text');
     text.innerHTML = hotspot.text;
     
-    var demoVideo = document.createElement('div');
-    demoVideo.classList.add('info-hotspot-text');
-    demoVideo.img = hotspot.img;
+    // var demoVideo = document.createElement('div');
+    // demoVideo.classList.add('info-hotspot-text');
+    // demoVideo.img = hotspot.img;
 
     // Place header and   into wrapper element.
     wrapper.appendChild(header);
@@ -392,17 +399,8 @@
 
   // Display the initial scene.
   switchScene(scenes[0]);
-
-})();
-
-// Start playback on click.
-// Playback cannot start automatically because most browsers require the play()
-// method on the video element to be called in the context of a user action.
-// document.body.addEventListener('click', tryStart);
-// document.body.addEventListener('touchstart', tryStart);
-
-// Whether playback has started.
-var started = false;
+  
+  var started = false;
 var start = true;
 (function startToPlay(){
 if(start){
@@ -446,3 +444,13 @@ function waitForReadyState(element, readyState, interval, done) {
     }
   }, interval);
 }
+
+})();
+
+// Start playback on click.
+// Playback cannot start automatically because most browsers require the play()
+// method on the video element to be called in the context of a user action.
+// document.body.addEventListener('click', tryStart);
+// document.body.addEventListener('touchstart', tryStart);
+
+// Whether playback has started.
