@@ -394,3 +394,55 @@
   switchScene(scenes[0]);
 
 })();
+
+// Start playback on click.
+// Playback cannot start automatically because most browsers require the play()
+// method on the video element to be called in the context of a user action.
+// document.body.addEventListener('click', tryStart);
+// document.body.addEventListener('touchstart', tryStart);
+
+// Whether playback has started.
+var started = false;
+var start = true;
+(function startToPlay(){
+if(start){
+   start = false;
+   tryStart();
+}})();
+// Try to start playback.
+function tryStart() {
+  if (started) {
+    return;
+  }
+  started = true;
+
+  var video = document.createElement('video');
+  video.src = 'http://www.marzipano.net/media/video/mercedes-f1-1280x640.mp4';
+  video.crossOrigin = 'anonymous';
+  video.autoplay = true;
+  video.loop = true;
+  video.muted = true;
+  // Prevent the video from going full screen on iOS.
+  video.playsInline = true;
+  video.webkitPlaysInline = true;
+
+  video.play();
+
+  waitForReadyState(video, video.HAVE_METADATA, 100, function() {
+    waitForReadyState(video, video.HAVE_ENOUGH_DATA, 100, function() {
+      asset.setVideo(video);
+    });
+  });
+}
+
+// Wait for an element to reach the given readyState by polling.
+// The HTML5 video element exposes a `readystatechange` event that could be
+// listened for instead, but it seems to be unreliable on some browsers.
+function waitForReadyState(element, readyState, interval, done) {
+  var timer = setInterval(function() {
+    if (element.readyState >= readyState) {
+      clearInterval(timer);
+      done(null, true);
+    }
+  }, interval);
+}
