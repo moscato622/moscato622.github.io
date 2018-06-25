@@ -69,23 +69,37 @@ var APP_DATA = {
     "tiles/0-ss/{z}/{f}/{y}/{x}.jpg"
   );
   var view = new Marzipano.RectilinearView();
-  var asset = new VideoAsset();
-
   var scene = viewer.createScene({
-    source: new Marzipano.SingleAssetSource(asset),
+     source: source,
     geometry: geometry,
     view: view
   });
 
   //////scene 02
-  var limiter = Marzipano.RectilinearView.limit.vfov(90*Math.PI/180, 90*Math.PI/180);
+  // Initialize viewer.
+    var viewerOpts2 = {
+    stageType: 'webgl',
+    controls: {
+      mouseViewMode: data.settings.mouseViewMode
+    }
+  };
 
-  var scene2 = viewer.createScene({
-    source: Marzipano.ImageUrlSource.fromString(
-      "tiles/1-ss/{z}/{f}/{y}/{x}.jpg"
-    ),
-    geometry: new Marzipano.EquirectGeometry([ { width: 1 } ]),
-    view: new Marzipano.RectilinearView({ fov: Math.PI/2 }, limiter)
+  var viewerOpts2 = { stageType: 'webgl' };
+  var viewer2 = new Marzipano.Viewer(document.getElementById('pano'), viewerOpts2);
+
+  var asset = new VideoAsset();
+  var source2 = new Marzipano.SingleAssetSource(asset);
+  var geometry2 = new Marzipano.EquirectGeometry([ { width: 1 } ]);
+  
+  var limiter = Marzipano.RectilinearView.limit.vfov(90*Math.PI/180, 90*Math.PI/180);
+  var view2 = new Marzipano.RectilinearView({ fov: Math.PI/2 }, limiter);
+
+
+
+  var scene2 = viewer2.createScene({
+    source: source2,
+    geometry: geometry2,
+    view: view2
   });
 
   ////
