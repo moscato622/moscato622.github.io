@@ -79,7 +79,7 @@ var APP_DATA = {
 
   //////scene 02
   var limiter = Marzipano.RectilinearView.limit.vfov(90*Math.PI/180, 90*Math.PI/180);
-  
+
   var scene2 = viewer.createScene({
     source: Marzipano.ImageUrlSource.fromString(
       "tiles/1-ss/{z}/{f}/{y}/{x}.jpg"
@@ -107,7 +107,7 @@ var APP_DATA = {
     scene2.switchTo({
       transitionDuration: 1000
     });
-    tryStart();
+    play360Video();
   });
 
   scene.switchTo({
@@ -115,13 +115,10 @@ var APP_DATA = {
   });
 })();
 
-var started = false;
+function play360Video(){
 // Try to start playback.
 function tryStart() {
-  if (started) {
-    return;
-  }
-  started = true;
+
 
   var video = document.createElement('video');
   video.src = 'http://www.marzipano.net/media/video/mercedes-f1-1280x640.mp4';
@@ -152,4 +149,6 @@ function waitForReadyState(element, readyState, interval, done) {
       done(null, true);
     }
   }, interval);
+};
+
 };
