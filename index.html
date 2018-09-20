@@ -11,7 +11,7 @@
 				overflow: hidden;
 			}
 
-			#info {
+			/* #info {
 				position: absolute;
 				top: 0px; width: 100%;
 				color: #ffffff;
@@ -20,11 +20,11 @@
 				font-size:13px;
 				font-weight: bold;
 				text-align:center;
-			}
+			} */
 
-			a {
+			/* a {
 				color: #ff8800;
-			}
+			} */
             
             /*chromakey css*/
             
@@ -137,9 +137,10 @@
     
     canvas.width  = window.innerWidth;
     canvas.height = window.innerHeight;
-
-    _video.width  = window.innerWidth;
-    _video.height = window.innerHeight;
+    _video.setAttribute('width', _ctx.canvas.width);
+    _video.setAttribute('height',_ctx.canvas.height);
+    // _video.width  = window.innerWidth;
+    // _video.height = window.innerHeight;
 
     
        //  var
@@ -285,7 +286,7 @@
     
    
 var video = document.getElementById('video');
-var constraints = { audio:false, video:{width:1920,height:1080,facingMode:"environment"} }
+var constraints = { audio:false, video:{width:_width,height:_height,facingMode:"environment"} }
 
 //older browsers might not implement mediaDevices
 if(navigator.mediaDevices === undefined) {
