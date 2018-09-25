@@ -286,14 +286,7 @@
     
    
 var video = document.getElementById('video');
-var constraints = { 
-    audio:false, 
-    video:{ 
-    width: { min: 776, ideal: 720, max: 1080 }, 
-    height: { min: 1024, ideal: 1280, max: 1920 },
-    aspectRatrio: 1.777777778, 
-    facingMode:"environment"} 
-    }
+var constraints = { audio:false, video:{width:{min:720},height:{min:1280}, facingMode:"environment"} }
 
 //older browsers might not implement mediaDevices
 if(navigator.mediaDevices === undefined) {
