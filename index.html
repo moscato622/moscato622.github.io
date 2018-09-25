@@ -367,7 +367,7 @@ video.addEventListener('canplay', function(ev){
 				//
 
 				renderer = new THREE.WebGLRenderer();
-				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setPixelRatio( window.innerHeight / window.innerWidth );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
 
