@@ -367,7 +367,7 @@ video.addEventListener('canplay', function(ev){
 				//
 
 				renderer = new THREE.WebGLRenderer();
-				renderer.setPixelRatio( window.innerHeight / window.innerWidth );
+				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
 
@@ -389,7 +389,7 @@ video.addEventListener('canplay', function(ev){
 
 			function onWindowResize() {
 
-				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.aspect = window.innerHeight / window.innerWidth;
 				camera.updateProjectionMatrix();
 
 				renderer.setSize( window.innerWidth, window.innerHeight );
