@@ -26,7 +26,8 @@
 	<body>
         
         <!-- chromakey div -->
-        <div style="text-align: center;">      
+        <div style="text-align: center;">     
+            <p>"1"</p>
             <video id="video" style="position: absolute; top: -999px;" muted autoplay playsinline>Video</video>
             <canvas id="canvas" 
    style="position: absolute; left: 0; top: 0; z-index: 10;"></canvas>
@@ -70,8 +71,8 @@
     
     canvas.width  = window.innerWidth;
     canvas.height = window.innerHeight;
-    _video.setAttribute('width', _ctx.canvas.height);
-    _video.setAttribute('height',_ctx.canvas.width);    
+    _video.setAttribute('width', 1920);
+    _video.setAttribute('height',1080s);    
 
     var _videoPlaying= function(){
         
@@ -85,8 +86,8 @@
             _height= _w.innerHeight;
         }
         
-        _tmpCtx.drawImage(_video, 0, 0, _height, _width);
-        frame= _tmpCtx.getImageData(0, 0, _height, _width);
+        _tmpCtx.drawImage(_video, 0, 0, _width, _height);
+        frame= _tmpCtx.getImageData(0, 0, _width, _height);
         data= frame.data;
         
         l= data.length/4;
