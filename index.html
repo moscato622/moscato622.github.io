@@ -66,14 +66,14 @@
         _colors3 = [0, 0, 200],
         _range  = 200;
     
-    _tmpCtx.width=_w.innerWidth;
-    _tmpCtx.height= _w.innerHeight;
+    _tmpCtx.width=1920;
+    _tmpCtx.height= 1080;
     _tmpCtx= _tmpCtx.getContext('2d');
     
-    canvas.width  = window.innerWidth;
-    canvas.height = window.innerHeight;
-    _video.setAttribute('width', _w.innerWidth);
-    _video.setAttribute('height', _w.innerHeight);    
+    canvas.width  = 1920;
+    canvas.height = 1080;
+    _video.setAttribute('width', 1920);
+    _video.setAttribute('height', 1080);    
 
     var _videoPlaying= function(){
         
@@ -83,8 +83,8 @@
             r, g, b;
         
         if(!_width){
-            _width= _w.innerWidth;
-            _height= _w.innerHeight;
+            _width= 1920;
+            _height= 1080;
         }
         
         _tmpCtx.drawImage(_video, 0, 0, _width, _height);
