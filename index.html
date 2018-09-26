@@ -28,7 +28,7 @@
         
         <!-- chromakey div -->
         <div style="text-align: center;">     
-            <p id= "p" style="position: absolute; left: 0; top: 0; z-index: 11;">gyro</p>
+            <p id= "p" style="position: absolute; left: 0; top: 0; z-index: 11;">0.56</p>
             <video id="video" style="position: absolute; top: -999px;" muted autoplay playsinline>Video</video>
             <canvas id="canvas" 
    style="position: absolute; left: 0; top: 0; z-index: 10;"></canvas>
@@ -161,7 +161,7 @@
     
    
 var video = document.getElementById('video');
-var constraints = { audio:false, video:{width:1920,height:1080, aspectRatrio: 1.7777776, facingMode:"environment"} }
+var constraints = { audio:false, video:{width:1080,height:1920, aspectRatrio: 0.5625, facingMode:"environment"} }
 
 //older browsers might not implement mediaDevices
 if(navigator.mediaDevices === undefined) {
@@ -201,7 +201,7 @@ video.addEventListener('canplay', function(ev){
         </script>
         
     
-		<script>
+		<!-- <script>
 
 			var container, camera, scene, renderer, controls;
 
@@ -261,6 +261,6 @@ video.addEventListener('canplay', function(ev){
 
 			}
 
-		</script>
+		</script> -->
 	</body>
 </html>
