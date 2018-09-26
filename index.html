@@ -28,7 +28,7 @@
         
         <!-- chromakey div -->
         <div style="text-align: center;">     
-            <p id= "p" style="position: absolute; left: 0; top: 0; z-index: 11;">2</p>
+            <p id= "p" style="position: absolute; left: 0; top: 0; z-index: 11;">gyro</p>
             <video id="video" style="position: absolute; top: -999px;" muted autoplay playsinline>Video</video>
             <canvas id="canvas" 
    style="position: absolute; left: 0; top: 0; z-index: 10;"></canvas>
@@ -201,7 +201,7 @@ video.addEventListener('canplay', function(ev){
         </script>
         
     
-		<!-- <script>
+		<script>
 
 			var container, camera, scene, renderer, controls;
 
@@ -223,7 +223,7 @@ video.addEventListener('canplay', function(ev){
 				geometry.scale( - 1, 1, 1 );
 
 				var material = new THREE.MeshBasicMaterial( {
-					map: new THREE.TextureLoader().load( 'textures/texture.jpg' )
+					map: new THREE.TextureLoader().load( 'textures/bj.jpg' )
 				} );
 
 				var mesh = new THREE.Mesh( geometry, material );
@@ -261,6 +261,6 @@ video.addEventListener('canplay', function(ev){
 
 			}
 
-		</script> -->
+		</script>
 	</body>
 </html>
