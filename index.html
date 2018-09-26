@@ -28,7 +28,7 @@
         
         <!-- chromakey div -->
         <div style="text-align: center;">     
-            <p id= "p" style="position: absolute; left: 0; top: 0; z-index: 11;">1</p>
+            <p id= "p" style="position: absolute; left: 0; top: 0; z-index: 11;">2</p>
             <video id="video" style="position: absolute; top: -999px;" muted autoplay playsinline>Video</video>
             <canvas id="canvas" 
    style="position: absolute; left: 0; top: 0; z-index: 10;"></canvas>
@@ -161,7 +161,7 @@
     
    
 var video = document.getElementById('video');
-var constraints = { audio:false, video:{width:1280,height:1080, aspectRatrio: 1, facingMode:"environment"} }
+var constraints = { audio:false, video:{width:_width,height:_height, aspectRatrio: 1.7777776, facingMode:"environment"} }
 
 //older browsers might not implement mediaDevices
 if(navigator.mediaDevices === undefined) {
@@ -212,7 +212,7 @@ video.addEventListener('canplay', function(ev){
 
 				container = document.getElementById( 'container' );
 
-				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
+				camera = new THREE.PerspectiveCamera( 75, 1.7777776, 1, 1100 );
 
 				controls = new THREE.DeviceOrientationControls( camera );
 
