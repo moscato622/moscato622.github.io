@@ -28,7 +28,7 @@
         
         <!-- chromakey div -->
         <div style="text-align: center;">     
-            <p id= "p" style="position: absolute; left: 0; top: 0; z-index: 11;">*1</p>
+            <p id= "p" style="position: absolute; left: 0; top: 0; z-index: 11;">*1.2</p>
             <video id="video" style="position: absolute; top: -9999px; z-index: 1" muted autoplay playsinline>Video</video>
             <canvas id="canvas" 
    style="position: absolute; left: 0; top: 0; z-index: 2;"></canvas>
@@ -85,7 +85,7 @@
         
         if(!_width){
             _width= _w.innerWidth;
-            _height= _w.innerWidth*1.77777776;
+            _height= _w.innerHeight;
         }
         
         _tmpCtx.drawImage(_video, 0, 0, _width, _height);
