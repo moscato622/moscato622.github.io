@@ -19,7 +19,7 @@
             video{
                 display: block;
                 position: absolute;
-                left: 0px;
+                left: -999px;
             }
 
 		</style>
@@ -29,7 +29,7 @@
         <!-- chromakey div -->
         <div style="text-align: center;">     
             <p id= "p" style="position: absolute; left: 0; top: 0; z-index: 10;">*0.1</p>
-            <video id="video" style="position: absolute; top: 0px; z-index: 11" muted autoplay playsinline>Video</video>
+            <video id="video" style="position: absolute; top: -9999px; z-index: 1" muted autoplay playsinline>Video</video>
             <canvas id="canvas" 
    style="position: absolute; left: 0; top: 0; z-index: 2;"></canvas>
       <!-- <canvas id="canvas2" 
@@ -75,17 +75,16 @@
     _video.setAttribute('width', 1920);
     _video.setAttribute('height', 1080);    
     
-
-    function setupCanvas(canvas) {
+    function setupCanvas(_canvas) {
   // Get the device pixel ratio, falling back to 1.
   var dpr = window.devicePixelRatio || 1;
   // Get the size of the canvas in CSS pixels.
-  var rect = canvas.getBoundingClientRect();
+  var rect = _canvas.getBoundingClientRect();
   // Give the canvas pixel dimensions of their CSS
   // size * the device pixel ratio.
-  canvas.width = rect.width * dpr;
-  canvas.height = rect.height * dpr;
-  var ctx = canvas.getContext('2d');
+  _canvas.width = rect.width * dpr;
+  _canvas.height = rect.height * dpr;
+  var ctx = _canvas.getContext('2d');
   // Scale all drawing operations by the dpr, so you
   // don't have to worry about the difference.
   ctx.scale(dpr, dpr);
@@ -96,8 +95,7 @@
 // but will look sharper on high-DPI devices!
 var ctx = setupCanvas(document.querySelector('canvas'));
 
-
-    document.getElementById('p').innerHTML = _w.innerWidth + " " + _w.innerWidth*1.77777776;
+    document.getElementById('p').innerHTML = _w.innerWidth + " " + s;
     var _videoPlaying= function(){
         
         var frame= '',
