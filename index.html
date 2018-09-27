@@ -29,8 +29,6 @@
         <!-- chromakey div -->
         <div style="text-align: center;">     
             <p id= "p" style="position: absolute; left: 0; top: 0; z-index: 11;">*0.5625</p>
-            <p id= "w" style="position: absolute; left: 0; top: 25; z-index: 11;">w</p>
-            <p id= "h" style="position: absolute; left: 0; top: 50; z-index: 11;">innerHeight</p>
             <video id="video" style="position: absolute; top: -9999px; z-index: 1" muted autoplay playsinline>Video</video>
             <canvas id="canvas" 
    style="position: absolute; left: 0; top: 0; z-index: 2;"></canvas>
@@ -56,8 +54,6 @@
 
     var _video  = _d.getElementById('video'),
         _canvas = _d.getElementById('canvas'),
-        _pw = d.getElementById('w'),
-        _ph = d.getElementById('h'),
         _ctx    = _canvas.getContext('2d'),
         _n      = navigator,
         _w      = window,
@@ -76,8 +72,6 @@
     
     _canvas.width  = _w.innerWidth;
     _canvas.height = _w.innerHeight;
-    // _w = _w.innerWidth;
-    // _h = _w.innerHeight;
     _video.setAttribute('width', 1920);
     _video.setAttribute('height', 1080);    
 
