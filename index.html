@@ -70,12 +70,27 @@
     _tmpCtx.height= _w.innerHeight;
     _tmpCtx= _tmpCtx.getContext('2d');
     
+
+// Set display size (css pixels).
+var size = 600;
+_tmpCtx.style.width = size + "px";
+_tmpCtx.style.height = size + "px";
+
+// Set actual size in memory (scaled to account for extra pixel density).
+var scale = window.devicePixelRatio; // <--- Change to 1 on retina screens to see blurry canvas.
+_tmpCtx.width = size * scale;
+_tmpCtx.height = size * scale;
+
+// Normalize coordinate system to use css pixels.
+_tmpCtx.scale(scale, scale);
+
+
     _canvas.width  = _w.innerWidth;
     _canvas.height = _w.innerHeight;
     _video.setAttribute('width', 1920);
     _video.setAttribute('height', 1080);    
     
-    document.getElementById('p').innerHTML = _w.innerWidth + " " + _w.innerHeight;
+    document.getElementById('p').innerHTML = 1.1 + " " + _w.innerWidth + " " + _w.innerHeight;
     var _videoPlaying= function(){
         
         var frame= '',
