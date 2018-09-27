@@ -53,7 +53,7 @@
             window.ck= (function(_d){
 
     var _video  = _d.getElementById('video'),
-        // _canvas = _d.getElementById('canvas'),
+        _canvas = _d.getElementById('canvas'),
         _ctx    = _canvas.getContext('2d'),
         _n      = navigator,
         _w      = window,
@@ -70,12 +70,12 @@
     _tmpCtx.height= _w.innerHeight;
     _tmpCtx= _tmpCtx.getContext('2d');
     
-    // _canvas.width  = _w.innerWidth;
-    // _canvas.height = _w.innerHeight;
+    _canvas.width  = _w.innerWidth;
+    _canvas.height = _w.innerHeight;
     _video.setAttribute('width', 1920);
     _video.setAttribute('height', 1080);    
     
-    document.getElementById('p').innerHTML = " *" + _w.innerWidth + " " + _w.innerHeight;
+    document.getElementById('p').innerHTML = _w.innerWidth + " " + _w.innerHeight;
     var _videoPlaying= function(){
         
         var frame= '',
@@ -181,7 +181,7 @@ navigator.mediaDevices.getUserMedia(constraints)
                 // _d.getElementById('range').addEventListener('change', function(){
                 //     _range= 255 - this.value;
                 // });
-                _tmpCtx.addEventListener('click', _videoClick);    
+                _canvas.addEventListener('click', _videoClick);    
   };
 })
 .catch(function(err) { //error
