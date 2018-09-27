@@ -75,24 +75,6 @@
     _video.setAttribute('width', 1920);
     _video.setAttribute('height', 1080);    
     
-    //get DPI
-let dpi = window.devicePixelRatio;
-//get canvas
-// let canvas = document.getElementById('myCanvas');
-//get context
-// let ctx = canvas.getContext('2d');
-function fix_dpi() {
-//get CSS height
-//the + prefix casts it to an integer
-//the slice method gets rid of "px"
-let style_height = +getComputedStyle(_canvas).getPropertyValue("height").slice(0, -2);
-//get CSS width
-let style_width = +getComputedStyle(_canvas).getPropertyValue("width").slice(0, -2);
-//scale the canvas
-_canvas.setAttribute('height', style_height * dpi);
-_canvas.setAttribute('width', style_width * dpi);
-}
-
     document.getElementById('p').innerHTML = _w.innerWidth + " " + s;
     var _videoPlaying= function(){
         
