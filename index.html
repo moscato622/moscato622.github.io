@@ -28,7 +28,7 @@
         
         <!-- chromakey div -->
         <div style="text-align: center;">     
-            <p id= "p" style="position: absolute; left: 0; top: 0; z-index: 10; color: aliceblue">*0.11</p>
+            <p id= "p" style="position: absolute; left: 0; top: 0; z-index: 10; color: aliceblue">*0.111</p>
             <video id="video" style="position: absolute; top: -9999px; z-index: 1" muted autoplay playsinline>Video</video>
             <canvas id="canvas" 
    style="position: absolute; left: 0; top: 0; z-index: 2;"></canvas>
@@ -83,9 +83,27 @@ _tmpCtx.height = _w.innerHeight * scale;
 // Normalize coordinate system to use css pixels.
 _tmpCtx.scale(scale, scale);
 
+///////////////////////////
 
-    _canvas.width  = _w.innerWidth;
-    _canvas.height = _w.innerHeight;
+    _canvas= _tmpCtx.getContext('2d');
+    
+
+    // Set display size (css pixels).
+    _canvas.style.width = _w.innerWidth + "px";
+    _canvas.style.height = _w.innerHeight + "px";
+    
+    // Set actual size in memory (scaled to account for extra pixel density).
+    var scale = window.devicePixelRatio; // <--- Change to 1 on retina screens to see blurry canvas.
+    _canvas.width = _w.innerWidth * scale;
+    _canvas.height = _w.innerHeight * scale;
+    
+    // Normalize coordinate system to use css pixels.
+    _ctx.scale(scale, scale);
+
+
+
+    // _canvas.width  = _w.innerWidth;
+    // _canvas.height = _w.innerHeight;
     _video.setAttribute('width', 1920);
     _video.setAttribute('height', 1080);    
     
