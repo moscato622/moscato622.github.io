@@ -68,14 +68,22 @@
     
     _tmpCtx.width= 1920;
     _tmpCtx.height= 1080;
+    
+    _tmpCtx.style.width = _w.innerWidth;
+    _tmpCtx.style.height = _w.innerHeight;
+
     _tmpCtx= _tmpCtx.getContext('2d');
     
     _canvas.width  = 1920;
     _canvas.height = 1080;
+
+    _canvas.style.width = _w.innerWidth;
+    _canvas.style.height = _w.innerHeight;
+
     _video.setAttribute('width', 1920);
     _video.setAttribute('height', 1080);    
     
-    document.getElementById('p').innerHTML = _w.devicePixelRatio + " " + _w.innerWidth + " " + _w.innerHeight;
+    document.getElementById('p').innerHTML = _w.devicePixelRatio + " 1 " + _w.innerWidth + " " + _w.innerHeight;
     var _videoPlaying= function(){
         
         var frame= '',
