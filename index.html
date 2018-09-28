@@ -121,11 +121,11 @@
                 frame.data[l*4+3]= 0;
             }
             
-            if( 250 - _range > Math.abs(r - _colors[0]) > 250 - _range - _feather 
+            if( 250 - _range > Math.abs(r - _colors[0]) > 250 - _range + _feather 
                 &&
-                250 - _range > Math.abs(g - _colors[1]) > 250 - _range - _feather
+                250 - _range > Math.abs(g - _colors[1]) > 250 - _range + _feather
                 &&
-                250 - _range > Math.abs(b - _colors[2]) > 250 - _range - _feather)
+                250 - _range > Math.abs(b - _colors[2]) > 250 - _range + _feather)
             {
                 frame.data[l*4+3]= 50;
             }
