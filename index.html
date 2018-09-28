@@ -106,6 +106,8 @@
         data= frame.data;
         
         l= data.length/4;
+
+        _tmpCtx.filter = "blur(25px)";  // "feather"
         while(l--){
             r= data[l*4];
             g= data[l*4+1];
@@ -120,14 +122,14 @@
                 frame.data[l*4+3]= 0;
             }
             
-            if( 250 - _range - _feather < Math.abs(r - _colors[0]) < 250 - _range 
-                &&
-                250 - _range - _feather < Math.abs(g - _colors[1]) < 250 - _range
-                &&
-                250 - _range - _feather < Math.abs(b - _colors[2]) < 250 - _range)
-            {
-                frame.data[l*4+3]= Math.abs(g - _colors[0]) - 250 - _range;
-            }
+            // if( 250 - _range - _feather < Math.abs(r - _colors[0]) < 250 - _range 
+            //     &&
+            //     250 - _range - _feather < Math.abs(g - _colors[1]) < 250 - _range
+            //     &&
+            //     250 - _range - _feather < Math.abs(b - _colors[2]) < 250 - _range)
+            // {
+            //     frame.data[l*4+3]= Math.abs(g - _colors[0]) - 250 - _range;
+            // }
 
             if(Math.abs(r - _colors2[0]) < 250 - _range
                 &&
