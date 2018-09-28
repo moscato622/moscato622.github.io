@@ -112,14 +112,14 @@
             g= data[l*4+1];
             b= data[l*4+2];
             
-            if(Math.abs(r - _colors[0]) < 250 - _range
-                &&
-               Math.abs(g - _colors[1]) < 250 - _range
-                &&
-               Math.abs(b - _colors[2]) < 250 - _range)
-            {
-                frame.data[l*4+3]= 0;
-            }
+            // if(Math.abs(r - _colors[0]) < 250 - _range
+            //     &&
+            //    Math.abs(g - _colors[1]) < 250 - _range
+            //     &&
+            //    Math.abs(b - _colors[2]) < 250 - _range)
+            // {
+            //     frame.data[l*4+3]= 0;
+            // }
             
             if( 250 - _range > Math.abs(r - _colors[0]) > 250 - _range - _feather 
                 &&
