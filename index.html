@@ -57,6 +57,7 @@
         _ctx    = _canvas.getContext('2d'),
         _n      = navigator,
         _w      = window,
+        _scale  = window.devicePixelRatio,
         _width  = 0,
         _change = 1,
         _height = 0,
@@ -66,16 +67,16 @@
         _colors3 = [0, 0, 200],
         _range  = 200;
     
-    _tmpCtx.width= _w.innerWidth;
-    _tmpCtx.height= _w.innerHeight;
+    _tmpCtx.width= _w.innerWidth * _scale;
+    _tmpCtx.height= _w.innerHeight * _scale;
     
     _tmpCtx.style.width = _w.innerWidth + "px";
     _tmpCtx.style.height = _w.innerHeight + "px";
 
     _tmpCtx= _tmpCtx.getContext('2d');
     
-    _canvas.width  = _w.innerWidth;
-    _canvas.height = _w.innerHeight;
+    _canvas.width  = _w.innerWidth * _scale;
+    _canvas.height = _w.innerHeight * _scale;
 
     _canvas.style.width = _w.innerWidth + "px";
     _canvas.style.height = _w.innerHeight + "px";
