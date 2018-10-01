@@ -96,9 +96,7 @@
             data= null,
             l,
             r, g, b;
-     
-        document.getElementById('p').innerHTML = _colors;
-        
+
         if(!_width){
             _width= _w.innerWidth * _scale;
             _height= _w.innerWidth*1.77777776 * _scale;
@@ -169,6 +167,7 @@
             _colors= px;
         _p.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
         _change = 1;
+        document.getElementById('p').innerHTML = _colors;
       } else{
         
               if(_change == 2){
