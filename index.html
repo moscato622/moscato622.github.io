@@ -113,7 +113,7 @@
     _video.setAttribute('height', 1080);    
     
     
-    document.getElementById('p').innerHTML = _w.devicePixelRatio + " 21ks " + _w.innerWidth + " " + _w.innerHeight;
+    document.getElementById('p').innerHTML = _w.devicePixelRatio + " 21ks_ " + _w.innerWidth + " " + _w.innerHeight;
     var _videoPlaying= function(){
         
         var frame= '',
@@ -137,16 +137,204 @@
             g= data[l*4+1];
             b= data[l*4+2];
             
-            for(i = 0; i< _colorArray.length; i++){
-                if(Math.abs(r - _colorArray[i][0]) < 250 - _range
+            
+                if(Math.abs(r - _colorArray[0][0]) < 250 - _range
                 &&
-               Math.abs(g - _colorArray[i][1]) < 250 - _range
+               Math.abs(g - _colorArray[0][1]) < 250 - _range
                 &&
-               Math.abs(b - _colorArray[i][2]) < 250 - _range)
+               Math.abs(b - _colorArray[0][2]) < 250 - _range)
             {
                 frame.data[l*4+3]= 0;
-            }    
             }
+
+            if(Math.abs(r - _colorArray[1][0]) < 250 - _range
+                &&
+               Math.abs(g - _colorArray[1][1]) < 250 - _range
+                &&
+               Math.abs(b - _colorArray[1][2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            }
+
+             if(Math.abs(r - _colorArray[2][0]) < 250 - _range
+                &&
+               Math.abs(g - _colorArray[2][1]) < 250 - _range
+                &&
+               Math.abs(b - _colorArray[2][2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            }         
+            
+            if(Math.abs(r - _colorArray[3][0]) < 250 - _range
+                &&
+               Math.abs(g - _colorArray[3][1]) < 250 - _range
+                &&
+               Math.abs(b - _colorArray[3][2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            }
+
+             if(Math.abs(r - _colorArray[4][0]) < 250 - _range
+                &&
+               Math.abs(g - _colorArray[4][1]) < 250 - _range
+                &&
+               Math.abs(b - _colorArray[4][2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            }
+
+             if(Math.abs(r - _colorArray[5][0]) < 250 - _range
+                &&
+               Math.abs(g - _colorArray[5][1]) < 250 - _range
+                &&
+               Math.abs(b - _colorArray[5][2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            }
+
+             if(Math.abs(r - _colorArray[6][0]) < 250 - _range
+                &&
+               Math.abs(g - _colorArray[6][1]) < 250 - _range
+                &&
+               Math.abs(b - _colorArray[6][2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            }
+
+             if(Math.abs(r - _colorArray[7][0]) < 250 - _range
+                &&
+               Math.abs(g - _colorArray[7][1]) < 250 - _range
+                &&
+               Math.abs(b - _colorArray[7][2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            } 
+
+             if(Math.abs(r - _colorArray[8][0]) < 250 - _range
+                &&
+               Math.abs(g - _colorArray[8][1]) < 250 - _range
+                &&
+               Math.abs(b - _colorArray[8][2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            }
+
+             if(Math.abs(r - _colorArray[9][0]) < 250 - _range
+                &&
+               Math.abs(g - _colorArray[9][1]) < 250 - _range
+                &&
+               Math.abs(b - _colorArray[9][2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            } 
+
+             if(Math.abs(r - _colorArray[10][0]) < 250 - _range
+                &&
+               Math.abs(g - _colorArray[10][1]) < 250 - _range
+                &&
+               Math.abs(b - _colorArray[10][2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            } 
+
+             if(Math.abs(r - _colorArray[11][0]) < 250 - _range
+                &&
+               Math.abs(g - _colorArray[11][1]) < 250 - _range
+                &&
+               Math.abs(b - _colorArray[11][2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            } 
+
+             if(Math.abs(r - _colorArray[12][0]) < 250 - _range
+                &&
+               Math.abs(g - _colorArray[12][1]) < 250 - _range
+                &&
+               Math.abs(b - _colorArray[12][2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            }  
+
+             if(Math.abs(r - _colorArray[13][0]) < 250 - _range
+                &&
+               Math.abs(g - _colorArray[13][1]) < 250 - _range
+                &&
+               Math.abs(b - _colorArray[13][2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            }   
+
+             if(Math.abs(r - _colorArray[14][0]) < 250 - _range
+                &&
+               Math.abs(g - _colorArray[14][1]) < 250 - _range
+                &&
+               Math.abs(b - _colorArray[14][2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            }  
+
+             if(Math.abs(r - _colorArray[15][0]) < 250 - _range
+                &&
+               Math.abs(g - _colorArray[15][1]) < 250 - _range
+                &&
+               Math.abs(b - _colorArray[15][2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            } 
+
+             if(Math.abs(r - _colorArray[16][0]) < 250 - _range
+                &&
+               Math.abs(g - _colorArray[16][1]) < 250 - _range
+                &&
+               Math.abs(b - _colorArray[16][2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            }  
+
+             if(Math.abs(r - _colorArray[17][0]) < 250 - _range
+                &&
+               Math.abs(g - _colorArray[17][1]) < 250 - _range
+                &&
+               Math.abs(b - _colorArray[17][2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            } 
+
+             if(Math.abs(r - _colorArray[18][0]) < 250 - _range
+                &&
+               Math.abs(g - _colorArray[18][1]) < 250 - _range
+                &&
+               Math.abs(b - _colorArray[18][2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            } 
+
+             if(Math.abs(r - _colorArray[19][0]) < 250 - _range
+                &&
+               Math.abs(g - _colorArray[19][1]) < 250 - _range
+                &&
+               Math.abs(b - _colorArray[19][2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            }   
+
+             if(Math.abs(r - _colorArray[20][0]) < 250 - _range
+                &&
+               Math.abs(g - _colorArray[20][1]) < 250 - _range
+                &&
+               Math.abs(b - _colorArray[20][2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            } 
+
+             if(Math.abs(r - _colorArray[21][0]) < 250 - _range
+                &&
+               Math.abs(g - _colorArray[21][1]) < 250 - _range
+                &&
+               Math.abs(b - _colorArray[21][2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            }                                     
 
             // if(Math.abs(r - _colors[0]) < 250 - _range
             //     &&
