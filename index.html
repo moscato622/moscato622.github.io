@@ -88,7 +88,7 @@
     _video.setAttribute('width', 1920);
     _video.setAttribute('height', 1080);    
     
-    document.getElementById('p').innerHTML = _colors;
+    
     // document.getElementById('p').innerHTML = _w.devicePixelRatio + " 1.11 " + _w.innerWidth + " " + _w.innerHeight;
     var _videoPlaying= function(){
         
@@ -96,6 +96,8 @@
             data= null,
             l,
             r, g, b;
+     
+        document.getElementById('p').innerHTML = _colors;
         
         if(!_width){
             _width= _w.innerWidth * _scale;
