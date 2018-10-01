@@ -89,7 +89,7 @@
     _video.setAttribute('height', 1080);    
     
     
-    document.getElementById('p').innerHTML = _w.devicePixelRatio + " 1.11 " + _w.innerWidth + " " + _w.innerHeight;
+    document.getElementById('p').innerHTML = _w.devicePixelRatio + " 1.111 " + _w.innerWidth + " " + _w.innerHeight;
     var _videoPlaying= function(){
         
         var frame= '',
@@ -122,17 +122,17 @@
                 frame.data[l*4+3]= 0;
             }
             
-            if( 250 - _range + _feather> Math.abs(r - _colors[0]) > 250 - _range
-                &&
-                250 - _range + _feather> Math.abs(g - _colors[1]) > 250 - _range
-                &&
-                250 - _range + _feather> Math.abs(b - _colors[2]) > 250 - _range)
-            {
-                frame.data[l*4]= 160;
-                frame.data[l*4+1]= 250;
-                frame.data[l*4+2]= 150;
-                frame.data[l*4+3]= 100;
-            }
+            // if( 250 - _range + _feather> Math.abs(r - _colors[0]) > 250 - _range
+            //     &&
+            //     250 - _range + _feather> Math.abs(g - _colors[1]) > 250 - _range
+            //     &&
+            //     250 - _range + _feather> Math.abs(b - _colors[2]) > 250 - _range)
+            // {
+            //     frame.data[l*4]= 160;
+            //     frame.data[l*4+1]= 250;
+            //     frame.data[l*4+2]= 150;
+            //     frame.data[l*4+3]= 100;
+            // }
 
             if(Math.abs(r - _colors2[0]) < 250 - _range
                 &&
@@ -162,31 +162,32 @@
             frame= _ctx.getImageData(col, line, 1, 1);
             //px= [frame.data[0], frame.data[1], frame.data[2]];
 
-            document.getElementById('p').innerHTML = _colors3;
-
-            if(_change == 3){
-        var px= [frame.data[0], frame.data[1], frame.data[2]];
+            document.getElementById('p').innerHTML = _colors;
+            var px= [frame.data[0], frame.data[1], frame.data[2]];
             _colors= px;
-        _p.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
-        _change = 1;
-      } else{
+    //         if(_change == 3){
+    //     var px= [frame.data[0], frame.data[1], frame.data[2]];
+    //         _colors= px;
+    //     _p.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
+    //     _change = 1;
+    //   } else{
         
-              if(_change == 2){
-        var px2= [frame.data[0], frame.data[1], frame.data[2]];
-        _colors2= px2;
-        _p2.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
-        _change = 3;
-      }else
+    //           if(_change == 2){
+    //     var px2= [frame.data[0], frame.data[1], frame.data[2]];
+    //     _colors2= px2;
+    //     _p2.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
+    //     _change = 3;
+    //   }else
 
-      if(_change == 1){
-        var px3= [frame.data[0], frame.data[1], frame.data[2]];
-        _colors3= px3;
-        _p3.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
-        _change = 2;
-      }
-      }
+    //   if(_change == 1){
+    //     var px3= [frame.data[0], frame.data[1], frame.data[2]];
+    //     _colors3= px3;
+    //     _p3.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
+    //     _change = 2;
+    //   }
+    //   }
 
-        _colors= px;
+        // _colors= px;
     };
     
    
