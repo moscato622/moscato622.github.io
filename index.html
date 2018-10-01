@@ -89,7 +89,7 @@
     _video.setAttribute('height', 1080);    
     
     
-    // document.getElementById('p').innerHTML = _w.devicePixelRatio + " 1.11 " + _w.innerWidth + " " + _w.innerHeight;
+    document.getElementById('p').innerHTML = _w.devicePixelRatio + " 1.11 " + _w.innerWidth + " " + _w.innerHeight;
     var _videoPlaying= function(){
         
         var frame= '',
@@ -162,12 +162,13 @@
             frame= _ctx.getImageData(col, line, 1, 1);
             //px= [frame.data[0], frame.data[1], frame.data[2]];
 
+            document.getElementById('p').innerHTML = _colors;
+
             if(_change == 3){
         var px= [frame.data[0], frame.data[1], frame.data[2]];
             _colors= px;
         _p.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
         _change = 1;
-        document.getElementById('p').innerHTML = _colors;
       } else{
         
               if(_change == 2){
