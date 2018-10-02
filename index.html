@@ -69,7 +69,7 @@
         _colors4 = [55, 169, 102],
         _colors5 = [164, 45, 31],
         _colors6 = [99, 6, 146],
-        // _colors7 = [100, 222, 166],
+        _colors7 = [231, 111, 24],
         _range  = 200,
         _feather = 10;
     
@@ -154,6 +154,15 @@
                 frame.data[l*4+3]= 0;
             }
 
+            if(Math.abs(r - _colors7[0]) < 250 - _range -25
+                &&
+               Math.abs(g - _colors7[1]) < 250 - _range -25
+                &&
+               Math.abs(b - _colors[2]) < 250 - _range -25)
+            {
+                frame.data[l*4+3]= 0;
+            }
+
             // if( 250 - _range + _feather> Math.abs(r - _colors[0]) > 250 - _range
             //     &&
             //     250 - _range + _feather> Math.abs(g - _colors[1]) > 250 - _range
@@ -175,14 +184,14 @@
                 frame.data[l*4+3]= 0;
             }
 
-            // if(Math.abs(r - _colors3[0]) < 250 - _range
-            //     &&
-            //    Math.abs(g - _colors3[1]) < 250 - _range
-            //     &&
-            //    Math.abs(b - _colors3[2]) < 250 - _range)
-            // {
-            //     frame.data[l*4+3]= 0;
-            // }
+            if(Math.abs(r - _colors3[0]) < 250 - _range - 10
+                &&
+               Math.abs(g - _colors3[1]) < 250 - _range - 10
+                &&
+               Math.abs(b - _colors3[2]) < 250 - _range - 10)
+            {
+                frame.data[l*4+3]= 0;
+            }
         }
         
         _ctx.putImageData(frame, 0, 0);
