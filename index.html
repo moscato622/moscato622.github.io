@@ -67,6 +67,9 @@
         _colors2 = [145, 42, 75],
         _colors3 = [100, 222, 166],
         _colors4 = [55, 169, 102],
+        _colors5 = [164, 45, 31],
+        _colors6 = [99, 6, 146],
+        // _colors7 = [100, 222, 166],
         _range  = 200,
         _feather = 10;
     
@@ -133,6 +136,24 @@
                 frame.data[l*4+3]= 0;
             }
 
+            if(Math.abs(r - _colors5[0]) < 250 - _range - 25
+                &&
+               Math.abs(g - _colors5[1]) < 250 - _range - 25
+                &&
+               Math.abs(b - _colors5[2]) < 250 - _range - 25)
+            {
+                frame.data[l*4+3]= 0;
+            }
+
+            if(Math.abs(r - _colors6[0]) < 250 - _range
+                &&
+               Math.abs(g - _colors6[1]) < 250 - _range
+                &&
+               Math.abs(b - _colors6[2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            }
+
             // if( 250 - _range + _feather> Math.abs(r - _colors[0]) > 250 - _range
             //     &&
             //     250 - _range + _feather> Math.abs(g - _colors[1]) > 250 - _range
@@ -145,11 +166,11 @@
             //     frame.data[l*4+3]= 100;
             // }
 
-            if(Math.abs(r - _colors2[0]) < 250 - _range -25
+            if(Math.abs(r - _colors2[0]) < 250 - _range -35
                 &&
-               Math.abs(g - _colors2[1]) < 250 - _range -35
+               Math.abs(g - _colors2[1]) < 250 - _range -45
                 &&
-               Math.abs(b - _colors2[2]) < 250 - _range -25)
+               Math.abs(b - _colors2[2]) < 250 - _range -35)
             {
                 frame.data[l*4+3]= 0;
             }
