@@ -50,10 +50,11 @@
         <!-- chromakey -->
 
         <script>
+        var _video  = _d.getElementById('video');
         var _seriously = new Seriously();
         var _canvas = _d.getElementById('canvas');
         var target = _seriously.target('#_canvas');
-        var _src = _seriously.source('#video');
+        var _src = _seriously.source('#_video');
         
         var chroma = _seriously.effect('chroma');
         chroma.source = src;
