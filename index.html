@@ -70,7 +70,7 @@
         _colors5 = [164, 45, 31],
         _colors6 = [99, 6, 146],
         // _colors7 = [100, 222, 166],
-        _range  = 215,
+        _range  = 200,
         _feather = 10;
     
     _tmpCtx.width= _w.innerWidth * _scale;
@@ -175,14 +175,14 @@
                 frame.data[l*4+3]= 0;
             }
 
-            if(Math.abs(r - _colors3[0]) < 250 - _range
-                &&
-               Math.abs(g - _colors3[1]) < 250 - _range
-                &&
-               Math.abs(b - _colors3[2]) < 250 - _range)
-            {
-                frame.data[l*4+3]= 0;
-            }
+            // if(Math.abs(r - _colors3[0]) < 250 - _range
+            //     &&
+            //    Math.abs(g - _colors3[1]) < 250 - _range
+            //     &&
+            //    Math.abs(b - _colors3[2]) < 250 - _range)
+            // {
+            //     frame.data[l*4+3]= 0;
+            // }
         }
         
         _ctx.putImageData(frame, 0, 0);
