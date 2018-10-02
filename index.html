@@ -94,7 +94,7 @@
     _video.setAttribute('height', 1080);    
     
     
-    document.getElementById('p').innerHTML = _w.devicePixelRatio + " 5ks_ " + _w.innerWidth + " " + _w.innerHeight;
+    document.getElementById('p').innerHTML = _w.devicePixelRatio + " 4ks_ " + _w.innerWidth + " " + _w.innerHeight;
     var _videoPlaying= function(){
         
         var frame= '',
@@ -118,14 +118,14 @@
             g= data[l*4+1];
             b= data[l*4+2];
             
-            if(Math.abs(r - _colors[0]) < 250 - _range
-                &&
-               Math.abs(g - _colors[1]) < 250 - _range
-                &&
-               Math.abs(b - _colors[2]) < 250 - _range)
-            {
-                frame.data[l*4+3]= 0;
-            }
+            // if(Math.abs(r - _colors[0]) < 250 - _range
+            //     &&
+            //    Math.abs(g - _colors[1]) < 250 - _range
+            //     &&
+            //    Math.abs(b - _colors[2]) < 250 - _range)
+            // {
+            //     frame.data[l*4+3]= 0;
+            // }
             
             if(Math.abs(r - _colors4[0]) < 250 - _range
                 &&
@@ -166,14 +166,14 @@
             //     frame.data[l*4+3]= 100;
             // }
 
-            // if(Math.abs(r - _colors2[0]) < 250 - _range -10
-            //     &&
-            //    Math.abs(g - _colors2[1]) < 250 - _range -10
-            //     &&
-            //    Math.abs(b - _colors2[2]) < 250 - _range -10)
-            // {
-            //     frame.data[l*4+3]= 0;
-            // }
+            if(Math.abs(r - _colors2[0]) < 250 - _range -10
+                &&
+               Math.abs(g - _colors2[1]) < 250 - _range -10
+                &&
+               Math.abs(b - _colors2[2]) < 250 - _range -10)
+            {
+                frame.data[l*4+3]= 0;
+            }
 
             if(Math.abs(r - _colors3[0]) < 250 - _range
                 &&
