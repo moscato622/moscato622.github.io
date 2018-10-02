@@ -41,210 +41,195 @@
 		<div id="container"></div>
 
 		<script src="build/three.js"></script>
-        <script src="js_build/controls/DeviceOrientationControls.js"></script>
-        <script src="libs/seriously.js"></script>
-        <script src="libs/effects/seriously.chroma.js"></script>
+		<script src="js_build/controls/DeviceOrientationControls.js"></script>
 
 
          
         <!-- chromakey -->
 
         <script>
-        var _video  = _d.getElementById('video');
-        var _seriously = new Seriously();
-        var _canvas = _d.getElementById('canvas');
-        var target = _seriously.target('#_canvas');
-        var _src = _seriously.source('#_video');
-        
-        var chroma = _seriously.effect('chroma');
-        chroma.source = src;
-        target.source = chroma;
-        var r = 98/255;
-        var g = 175/255;
-        var b = 116/255;
-        chroma.screen = [r,g,b,1];
-        _seriously.source
-        _seriously.go();
-    //         window.ck= (function(_d){
 
-    // var _video  = _d.getElementById('video'),
-    //     _canvas = _d.getElementById('canvas'),
-    //     _ctx    = _canvas.getContext('2d'),
-    //     _n      = navigator,
-    //     _w      = window,
-    //     _scale  = window.devicePixelRatio || 1,
-    //     _width  = 0,
-    //     _change = 1,
-    //     _height = 0,
-    //     _tmpCtx = _d.createElement('canvas'),
-    //     // _colors = [0, 0, 200],
-    //     _colors = [0, 105, 163],
-    //     _colors2 = [136, 20, 66],
-    //     _colors3 = [100, 222, 166],
-    //     _colors4 = [55, 169, 102],
-    //     _colors5 = [164, 45, 31],
-    //     _colors6 = [99, 6, 146],
-    //     _colors7 = [231, 111, 24],
-    //     _range  = 200,
-    //     _feather = 10;
-    
-    // _tmpCtx.width= _w.innerWidth * _scale;
-    // _tmpCtx.height= _w.innerHeight * _scale;
-    
-    // _tmpCtx.style.width = _w.innerWidth + "px";
-    // _tmpCtx.style.height = _w.innerHeight + "px";
-
-    // _tmpCtx= _tmpCtx.getContext('2d');
-    
-    // _canvas.width  = _w.innerWidth * _scale;
-    // _canvas.height = _w.innerHeight * _scale;
-
-    // _canvas.style.width = _w.innerWidth + "px";
-    // _canvas.style.height = _w.innerHeight + "px";
-
-    // _ctx.scale(1,1);
-    // _tmpCtx.scale(1,1);
-    
-    // _video.setAttribute('width', 1920);
-    // _video.setAttribute('height', 1080);    
-    
-    
-    // document.getElementById('p').innerHTML = _w.devicePixelRatio + " 4ks_ " + _w.innerWidth + " " + _w.innerHeight;
-    // var _videoPlaying= function(){
-        
-    //     var frame= '',
-    //         data= null,
-    //         l,
-    //         r, g, b;
-
-    //     if(!_width){
-    //         _width= _w.innerWidth * _scale;
-    //         _height= _w.innerWidth*1.77777776 * _scale;
-    //     }
-        
-    //     _tmpCtx.drawImage(_video, 0, 0, _width, _height);
-    //     frame= _tmpCtx.getImageData(0, 0, _width, _height);
-    //     data= frame.data;
-        
-    //     l= data.length/4;
-
-    //     while(l--){
-    //         r= data[l*4];
-    //         g= data[l*4+1];
-    //         b= data[l*4+2];
             
-    //         if(Math.abs(r - _colors[0]) < 250 - _range
-    //             &&
-    //            Math.abs(g - _colors[1]) < 250 - _range
-    //             &&
-    //            Math.abs(b - _colors[2]) < 250 - _range)
-    //         {
-    //             frame.data[l*4+3]= 0;
-    //         }
-            
-    //         if(Math.abs(r - _colors4[0]) < 250 - _range
-    //             &&
-    //            Math.abs(g - _colors4[1]) < 250 - _range
-    //             &&
-    //            Math.abs(b - _colors4[2]) < 250 - _range)
-    //         {
-    //             frame.data[l*4+3]= 0;
-    //         }
+            window.ck= (function(_d){
 
-    //         if(Math.abs(r - _colors5[0]) < 250 - _range - 25
-    //             &&
-    //            Math.abs(g - _colors5[1]) < 250 - _range - 25
-    //             &&
-    //            Math.abs(b - _colors5[2]) < 250 - _range - 25)
-    //         {
-    //             frame.data[l*4+3]= 0;
-    //         }
-
-    //         if(Math.abs(r - _colors6[0]) < 250 - _range
-    //             &&
-    //            Math.abs(g - _colors6[1]) < 250 - _range
-    //             &&
-    //            Math.abs(b - _colors6[2]) < 250 - _range)
-    //         {
-    //             frame.data[l*4+3]= 0;
-    //         }
-
-    //         if(Math.abs(r - _colors7[0]) < 250 - _range -25
-    //             &&
-    //            Math.abs(g - _colors7[1]) < 250 - _range -25
-    //             &&
-    //            Math.abs(b - _colors7[2]) < 250 - _range -25)
-    //         {
-    //             frame.data[l*4+3]= 0;
-    //         }
-
-    //         // if( 250 - _range + _feather> Math.abs(r - _colors[0]) > 250 - _range
-    //         //     &&
-    //         //     250 - _range + _feather> Math.abs(g - _colors[1]) > 250 - _range
-    //         //     &&
-    //         //     250 - _range + _feather> Math.abs(b - _colors[2]) > 250 - _range)
-    //         // {
-    //         //     frame.data[l*4]= 160;
-    //         //     frame.data[l*4+1]= 250;
-    //         //     frame.data[l*4+2]= 150;
-    //         //     frame.data[l*4+3]= 100;
-    //         // }
-
-    //         if(Math.abs(r - _colors2[0]) < 250 - _range -10
-    //             &&
-    //            Math.abs(g - _colors2[1]) < 250 - _range -10
-    //             &&
-    //            Math.abs(b - _colors2[2]) < 250 - _range -10)
-    //         {
-    //             frame.data[l*4+3]= 0;
-    //         }
-
-    //         if(Math.abs(r - _colors3[0]) < 250 - _range - 10
-    //             &&
-    //            Math.abs(g - _colors3[1]) < 250 - _range - 10
-    //             &&
-    //            Math.abs(b - _colors3[2]) < 250 - _range - 10)
-    //         {
-    //             frame.data[l*4+3]= 0;
-    //         }
-    //     }
-        
-    //     _ctx.putImageData(frame, 0, 0);
-    // };
+    var _video  = _d.getElementById('video'),
+        _canvas = _d.getElementById('canvas'),
+        _ctx    = _canvas.getContext('2d'),
+        _n      = navigator,
+        _w      = window,
+        _scale  = window.devicePixelRatio || 1,
+        _width  = 0,
+        _change = 1,
+        _height = 0,
+        _tmpCtx = _d.createElement('canvas'),
+        // _colors = [0, 0, 200],
+        _colors = [0, 105, 163],
+        _colors2 = [136, 20, 66],
+        _colors3 = [100, 222, 166],
+        _colors4 = [55, 169, 102],
+        _colors5 = [164, 45, 31],
+        _colors6 = [99, 6, 146],
+        _colors7 = [231, 111, 24],
+        _range  = 200,
+        _feather = 10;
     
-    // var _videoClick= function(evt){
-    //     var line= evt.offsetY * _scale,
-    //         col= evt.offsetX * _scale,
-    //         frame= _ctx.getImageData(col, line, 1, 1);
-    //         //px= [frame.data[0], frame.data[1], frame.data[2]];
+    _tmpCtx.width= _w.innerWidth * _scale;
+    _tmpCtx.height= _w.innerHeight * _scale;
+    
+    _tmpCtx.style.width = _w.innerWidth + "px";
+    _tmpCtx.style.height = _w.innerHeight + "px";
 
-    //        document.getElementById('p').innerHTML = _colors;
-    //        var px= [frame.data[0], frame.data[1], frame.data[2]];
-    //        _colors= px;
-    // //         if(_change == 3){
-    // //     var px= [frame.data[0], frame.data[1], frame.data[2]];
-    // //         _colors= px;
-    // //     _p.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
-    // //     _change = 1;
-    // //   } else{
+    _tmpCtx= _tmpCtx.getContext('2d');
+    
+    _canvas.width  = _w.innerWidth * _scale;
+    _canvas.height = _w.innerHeight * _scale;
+
+    _canvas.style.width = _w.innerWidth + "px";
+    _canvas.style.height = _w.innerHeight + "px";
+
+    _ctx.scale(1,1);
+    _tmpCtx.scale(1,1);
+    
+    _video.setAttribute('width', 1920);
+    _video.setAttribute('height', 1080);    
+    
+    
+    document.getElementById('p').innerHTML = _w.devicePixelRatio + " 4ks_ " + _w.innerWidth + " " + _w.innerHeight;
+    var _videoPlaying= function(){
         
-    // //           if(_change == 2){
-    // //     var px2= [frame.data[0], frame.data[1], frame.data[2]];
-    // //     _colors2= px2;
-    // //     _p2.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
-    // //     _change = 3;
-    // //   }else
+        var frame= '',
+            data= null,
+            l,
+            r, g, b;
 
-    // //   if(_change == 1){
-    // //     var px3= [frame.data[0], frame.data[1], frame.data[2]];
-    // //     _colors3= px3;
-    // //     _p3.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
-    // //     _change = 2;
-    // //   }
-    // //   }
+        if(!_width){
+            _width= _w.innerWidth * _scale;
+            _height= _w.innerWidth*1.77777776 * _scale;
+        }
+        
+        _tmpCtx.drawImage(_video, 0, 0, _width, _height);
+        frame= _tmpCtx.getImageData(0, 0, _width, _height);
+        data= frame.data;
+        
+        l= data.length/4;
 
-    //     // _colors= px;
-    // };
+        while(l--){
+            r= data[l*4];
+            g= data[l*4+1];
+            b= data[l*4+2];
+            
+            if(Math.abs(r - _colors[0]) < 250 - _range
+                &&
+               Math.abs(g - _colors[1]) < 250 - _range
+                &&
+               Math.abs(b - _colors[2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            }
+            
+            if(Math.abs(r - _colors4[0]) < 250 - _range
+                &&
+               Math.abs(g - _colors4[1]) < 250 - _range
+                &&
+               Math.abs(b - _colors4[2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            }
+
+            if(Math.abs(r - _colors5[0]) < 250 - _range - 25
+                &&
+               Math.abs(g - _colors5[1]) < 250 - _range - 25
+                &&
+               Math.abs(b - _colors5[2]) < 250 - _range - 25)
+            {
+                frame.data[l*4+3]= 0;
+            }
+
+            if(Math.abs(r - _colors6[0]) < 250 - _range
+                &&
+               Math.abs(g - _colors6[1]) < 250 - _range
+                &&
+               Math.abs(b - _colors6[2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            }
+
+            if(Math.abs(r - _colors7[0]) < 250 - _range -25
+                &&
+               Math.abs(g - _colors7[1]) < 250 - _range -25
+                &&
+               Math.abs(b - _colors7[2]) < 250 - _range -25)
+            {
+                frame.data[l*4+3]= 0;
+            }
+
+            // if( 250 - _range + _feather> Math.abs(r - _colors[0]) > 250 - _range
+            //     &&
+            //     250 - _range + _feather> Math.abs(g - _colors[1]) > 250 - _range
+            //     &&
+            //     250 - _range + _feather> Math.abs(b - _colors[2]) > 250 - _range)
+            // {
+            //     frame.data[l*4]= 160;
+            //     frame.data[l*4+1]= 250;
+            //     frame.data[l*4+2]= 150;
+            //     frame.data[l*4+3]= 100;
+            // }
+
+            if(Math.abs(r - _colors2[0]) < 250 - _range -10
+                &&
+               Math.abs(g - _colors2[1]) < 250 - _range -10
+                &&
+               Math.abs(b - _colors2[2]) < 250 - _range -10)
+            {
+                frame.data[l*4+3]= 0;
+            }
+
+            if(Math.abs(r - _colors3[0]) < 250 - _range - 10
+                &&
+               Math.abs(g - _colors3[1]) < 250 - _range - 10
+                &&
+               Math.abs(b - _colors3[2]) < 250 - _range - 10)
+            {
+                frame.data[l*4+3]= 0;
+            }
+        }
+        
+        _ctx.putImageData(frame, 0, 0);
+    };
+    
+    var _videoClick= function(evt){
+        var line= evt.offsetY * _scale,
+            col= evt.offsetX * _scale,
+            frame= _ctx.getImageData(col, line, 1, 1);
+            //px= [frame.data[0], frame.data[1], frame.data[2]];
+
+           document.getElementById('p').innerHTML = _colors;
+           var px= [frame.data[0], frame.data[1], frame.data[2]];
+           _colors= px;
+    //         if(_change == 3){
+    //     var px= [frame.data[0], frame.data[1], frame.data[2]];
+    //         _colors= px;
+    //     _p.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
+    //     _change = 1;
+    //   } else{
+        
+    //           if(_change == 2){
+    //     var px2= [frame.data[0], frame.data[1], frame.data[2]];
+    //     _colors2= px2;
+    //     _p2.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
+    //     _change = 3;
+    //   }else
+
+    //   if(_change == 1){
+    //     var px3= [frame.data[0], frame.data[1], frame.data[2]];
+    //     _colors3= px3;
+    //     _p3.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
+    //     _change = 2;
+    //   }
+    //   }
+
+        // _colors= px;
+    };
     
    
 var video = document.getElementById('video');
