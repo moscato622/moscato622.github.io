@@ -4,14 +4,7 @@ var capture;
 function setup() {
    canvas = createCanvas(window.innerWidth, window.innerHeight,WEBGL);
    canvas.id('p5Canvas');
-   capture = createCapture({
-    audio: false,
-    video: {
-      facingMode: {
-        exact: "environment"
-      }
-    }
-  });
+   capture = createCapture(VIDEO);
    capture.size(window.innerWidth, window.innerWidth*1.77777776);
    capture.hide();
 
