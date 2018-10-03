@@ -1,17 +1,28 @@
-var capture;
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Seriously.js Camera Demo</title>
+</head>
+<body> 
+    <script src="../../p5/p5.js"></script>
+	<script src="../../p5/p5.main.js"></script>
+	<script src="../../p5/p5.pre-min.js"></script>
+    <script src="../../p5/addons/p5.dom.js"></script>
+    <script src="../../p5/addons/p5.sound.js"></script>
+	<script src="../../seriously.js"></script>
+	<script src="../../sources/seriously.camera.js"></script>
+	<script src="../../effects/seriously.edge.js"></script>
+	<!-- <script src="../../effects/seriously.blur.js"></script> -->
+	<script src="../../effects/seriously.Chroma.js"></script>
+	<script>
+
+	var capture;
 	
 
 function setup() {
    canvas = createCanvas(window.innerWidth, window.innerHeight,WEBGL);
    canvas.id('p5Canvas');
-   capture = createCapture({
-    audio: false,
-    video: {
-      facingMode: {
-        exact: "environment"
-      }
-    }
-  });
+   capture = createCapture(VIDEO);
    capture.size(window.innerWidth, window.innerWidth*1.77777776);
    capture.hide();
 
@@ -46,5 +57,8 @@ function setup() {
         chroma.screen = [r,g,b,1];
 
 		seriously.go();
-}
 
+}
+	</script>
+</body>
+</html>
