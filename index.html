@@ -63,13 +63,13 @@
         _height = 0,
         _tmpCtx = _d.createElement('canvas'),
         // _colors = [0, 0, 200],
-        _colors = [0, 105, 163],
-        _colors2 = [136, 20, 66],
-        _colors3 = [100, 222, 166],
-        _colors4 = [55, 169, 102],
-        _colors5 = [164, 45, 31],
-        _colors6 = [99, 6, 146],
-        _colors7 = [231, 111, 24],
+        _colors = [243, 45, 32],
+        _colors2 = [0, 133, 188],
+        _colors3 = [0, 70, 98],
+        _colors4 = [182, 32, 137],
+        _colors5 = [0, 155, 83],
+        _colors6 = [0, 113, 60],
+        _colors7 = [250, 142, 35],
         _range  = 200,
         _feather = 10;
     
@@ -136,11 +136,11 @@
                 frame.data[l*4+3]= 0;
             }
 
-            if(Math.abs(r - _colors5[0]) < 250 - _range - 25
+            if(Math.abs(r - _colors5[0]) < 250 - _range
                 &&
-               Math.abs(g - _colors5[1]) < 250 - _range - 25
+               Math.abs(g - _colors5[1]) < 250 - _range
                 &&
-               Math.abs(b - _colors5[2]) < 250 - _range - 25)
+               Math.abs(b - _colors5[2]) < 250 - _range)
             {
                 frame.data[l*4+3]= 0;
             }
@@ -154,11 +154,11 @@
                 frame.data[l*4+3]= 0;
             }
 
-            if(Math.abs(r - _colors7[0]) < 250 - _range -25
+            if(Math.abs(r - _colors7[0]) < 250 - _range
                 &&
-               Math.abs(g - _colors7[1]) < 250 - _range -25
+               Math.abs(g - _colors7[1]) < 250 - _range
                 &&
-               Math.abs(b - _colors7[2]) < 250 - _range -25)
+               Math.abs(b - _colors7[2]) < 250 - _range)
             {
                 frame.data[l*4+3]= 0;
             }
@@ -175,20 +175,20 @@
             //     frame.data[l*4+3]= 100;
             // }
 
-            if(Math.abs(r - _colors2[0]) < 250 - _range -10
+            if(Math.abs(r - _colors2[0]) < 250 - _range
                 &&
-               Math.abs(g - _colors2[1]) < 250 - _range -10
+               Math.abs(g - _colors2[1]) < 250 - _range
                 &&
-               Math.abs(b - _colors2[2]) < 250 - _range -10)
+               Math.abs(b - _colors2[2]) < 250 - _range)
             {
                 frame.data[l*4+3]= 0;
             }
 
-            if(Math.abs(r - _colors3[0]) < 250 - _range - 10
+            if(Math.abs(r - _colors3[0]) < 250 - _range
                 &&
-               Math.abs(g - _colors3[1]) < 250 - _range - 10
+               Math.abs(g - _colors3[1]) < 250 - _range
                 &&
-               Math.abs(b - _colors3[2]) < 250 - _range - 10)
+               Math.abs(b - _colors3[2]) < 250 - _range)
             {
                 frame.data[l*4+3]= 0;
             }
