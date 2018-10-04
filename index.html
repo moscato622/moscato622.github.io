@@ -64,15 +64,21 @@
         _height = 0,
         _tmpCtx = _d.createElement('canvas'),
         // _colors = [0, 0, 200],
-        _colors = [243, 45, 32],
-        _colors2 = [0, 208, 131],
-        _colors3 = [0, 88, 130],
-        _colors4 = [135, 25, 105],
-        _colors5 = [0, 155, 83],
-        _colors6 = [0, 113, 60],
-        _colors7 = [250, 142, 35],
-        _colors8 = [0,152,216],
-        _colors9 = [241,180,38],
+        // _colors = [243, 45, 32],
+        // _colors2 = [0, 208, 131],
+        // _colors3 = [0, 88, 130],
+        // _colors4 = [135, 25, 105],
+        // _colors5 = [0, 155, 83],
+        // _colors6 = [0, 113, 60],
+        // _colors7 = [250, 142, 35],
+        // _colors8 = [0,152,216],
+        // _colors9 = [241,180,38],
+
+        _colors = [226, 38, 77],
+        _colors2 = [0, 88, 130],
+        _colors3 = [135, 25, 105],
+        _colors4 = [0, 0, 151],
+        _colors5 = [83, 204, 155],
         _range  = 220,
         _feather = 10;
     
@@ -130,11 +136,11 @@
                 frame.data[l*4+3]= 0;
             }
             
-            if(Math.abs(r - _colors4[0]) < 250 - _range + 20
+            if(Math.abs(r - _colors4[0]) < 250 - _range
                 &&
-               Math.abs(g - _colors4[1]) < 250 - _range + 20
+               Math.abs(g - _colors4[1]) < 250 - _range
                 &&
-               Math.abs(b - _colors4[2]) < 250 - _range + 20)
+               Math.abs(b - _colors4[2]) < 250 - _range)
             {
                 frame.data[l*4+3]= 0;
             }
@@ -148,54 +154,6 @@
                 frame.data[l*4+3]= 0;
             }
 
-            if(Math.abs(r - _colors6[0]) < 250 - _range
-                &&
-               Math.abs(g - _colors6[1]) < 250 - _range
-                &&
-               Math.abs(b - _colors6[2]) < 250 - _range)
-            {
-                frame.data[l*4+3]= 0;
-            }
-
-            if(Math.abs(r - _colors7[0]) < 250 - _range
-                &&
-               Math.abs(g - _colors7[1]) < 250 - _range
-                &&
-               Math.abs(b - _colors7[2]) < 250 - _range)
-            {
-                frame.data[l*4+3]= 0;
-            }
-
-            if(Math.abs(r - _colors8[0]) < 250 - _range + 20
-                &&
-               Math.abs(g - _colors8[1]) < 250 - _range + 20
-                &&
-               Math.abs(b - _colors8[2]) < 250 - _range + 20)
-            {
-                frame.data[l*4+3]= 0;
-            }
-
-            if(Math.abs(r - _colors9[0]) < 250 - _range
-                &&
-               Math.abs(g - _colors9[1]) < 250 - _range
-                &&
-               Math.abs(b - _colors9[2]) < 250 - _range)
-            {
-                frame.data[l*4+3]= 0;
-            }
-
-            // if( 250 - _range + _feather> Math.abs(r - _colors[0]) > 250 - _range
-            //     &&
-            //     250 - _range + _feather> Math.abs(g - _colors[1]) > 250 - _range
-            //     &&
-            //     250 - _range + _feather> Math.abs(b - _colors[2]) > 250 - _range)
-            // {
-            //     frame.data[l*4]= 160;
-            //     frame.data[l*4+1]= 250;
-            //     frame.data[l*4+2]= 150;
-            //     frame.data[l*4+3]= 100;
-            // }
-
             if(Math.abs(r - _colors2[0]) < 250 - _range
                 &&
                Math.abs(g - _colors2[1]) < 250 - _range
@@ -205,14 +163,108 @@
                 frame.data[l*4+3]= 0;
             }
 
-            if(Math.abs(r - _colors3[0]) < 250 - _range + 20
+            if(Math.abs(r - _colors3[0]) < 250 - _range
                 &&
-               Math.abs(g - _colors3[1]) < 250 - _range + 20
+               Math.abs(g - _colors3[1]) < 250 - _range
                 &&
-               Math.abs(b - _colors3[2]) < 250 - _range + 20)
+               Math.abs(b - _colors3[2]) < 250 - _range)
             {
                 frame.data[l*4+3]= 0;
             }
+
+
+            // if(Math.abs(r - _colors[0]) < 250 - _range
+            //     &&
+            //    Math.abs(g - _colors[1]) < 250 - _range
+            //     &&
+            //    Math.abs(b - _colors[2]) < 250 - _range)
+            // {
+            //     frame.data[l*4+3]= 0;
+            // }
+            
+            // if(Math.abs(r - _colors4[0]) < 250 - _range + 20
+            //     &&
+            //    Math.abs(g - _colors4[1]) < 250 - _range + 20
+            //     &&
+            //    Math.abs(b - _colors4[2]) < 250 - _range + 20)
+            // {
+            //     frame.data[l*4+3]= 0;
+            // }
+
+            // if(Math.abs(r - _colors5[0]) < 250 - _range
+            //     &&
+            //    Math.abs(g - _colors5[1]) < 250 - _range
+            //     &&
+            //    Math.abs(b - _colors5[2]) < 250 - _range)
+            // {
+            //     frame.data[l*4+3]= 0;
+            // }
+
+            // if(Math.abs(r - _colors6[0]) < 250 - _range
+            //     &&
+            //    Math.abs(g - _colors6[1]) < 250 - _range
+            //     &&
+            //    Math.abs(b - _colors6[2]) < 250 - _range)
+            // {
+            //     frame.data[l*4+3]= 0;
+            // }
+
+            // if(Math.abs(r - _colors7[0]) < 250 - _range
+            //     &&
+            //    Math.abs(g - _colors7[1]) < 250 - _range
+            //     &&
+            //    Math.abs(b - _colors7[2]) < 250 - _range)
+            // {
+            //     frame.data[l*4+3]= 0;
+            // }
+
+            // if(Math.abs(r - _colors8[0]) < 250 - _range + 20
+            //     &&
+            //    Math.abs(g - _colors8[1]) < 250 - _range + 20
+            //     &&
+            //    Math.abs(b - _colors8[2]) < 250 - _range + 20)
+            // {
+            //     frame.data[l*4+3]= 0;
+            // }
+
+            // if(Math.abs(r - _colors9[0]) < 250 - _range
+            //     &&
+            //    Math.abs(g - _colors9[1]) < 250 - _range
+            //     &&
+            //    Math.abs(b - _colors9[2]) < 250 - _range)
+            // {
+            //     frame.data[l*4+3]= 0;
+            // }
+
+            // // if( 250 - _range + _feather> Math.abs(r - _colors[0]) > 250 - _range
+            // //     &&
+            // //     250 - _range + _feather> Math.abs(g - _colors[1]) > 250 - _range
+            // //     &&
+            // //     250 - _range + _feather> Math.abs(b - _colors[2]) > 250 - _range)
+            // // {
+            // //     frame.data[l*4]= 160;
+            // //     frame.data[l*4+1]= 250;
+            // //     frame.data[l*4+2]= 150;
+            // //     frame.data[l*4+3]= 100;
+            // // }
+
+            // if(Math.abs(r - _colors2[0]) < 250 - _range
+            //     &&
+            //    Math.abs(g - _colors2[1]) < 250 - _range
+            //     &&
+            //    Math.abs(b - _colors2[2]) < 250 - _range)
+            // {
+            //     frame.data[l*4+3]= 0;
+            // }
+
+            // if(Math.abs(r - _colors3[0]) < 250 - _range + 20
+            //     &&
+            //    Math.abs(g - _colors3[1]) < 250 - _range + 20
+            //     &&
+            //    Math.abs(b - _colors3[2]) < 250 - _range + 20)
+            // {
+            //     frame.data[l*4+3]= 0;
+            // }
 
 
         }
