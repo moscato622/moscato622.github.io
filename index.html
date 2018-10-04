@@ -66,7 +66,7 @@
         // _colors = [0, 0, 200],
         _colors = [243, 45, 32],
         _colors2 = [0, 208, 131],
-        _colors3 = [0, 70, 98],
+        _colors3 = [0, 88, 130],
         _colors4 = [182, 32, 137],
         _colors5 = [0, 155, 83],
         _colors6 = [0, 113, 60],
@@ -128,11 +128,11 @@
                 frame.data[l*4+3]= 0;
             }
             
-            if(Math.abs(r - _colors4[0]) < 250 - _range
+            if(Math.abs(r - _colors4[0]) < 250 - _range + 20
                 &&
-               Math.abs(g - _colors4[1]) < 250 - _range
+               Math.abs(g - _colors4[1]) < 250 - _range + 20
                 &&
-               Math.abs(b - _colors4[2]) < 250 - _range)
+               Math.abs(b - _colors4[2]) < 250 - _range + 20)
             {
                 frame.data[l*4+3]= 0;
             }
@@ -185,11 +185,11 @@
                 frame.data[l*4+3]= 0;
             }
 
-            if(Math.abs(r - _colors3[0]) < 250 - _range
+            if(Math.abs(r - _colors3[0]) < 250 - _range + 20
                 &&
-               Math.abs(g - _colors3[1]) < 250 - _range
+               Math.abs(g - _colors3[1]) < 250 - _range + 20
                 &&
-               Math.abs(b - _colors3[2]) < 250 - _range)
+               Math.abs(b - _colors3[2]) < 250 - _range + 20)
             {
                 frame.data[l*4+3]= 0;
             }
