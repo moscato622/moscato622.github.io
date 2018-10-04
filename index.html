@@ -166,11 +166,11 @@
                 frame.data[l*4+3]= 0;
             }
 
-            if(Math.abs(r - _colors8[0]) < 250 - _range
+            if(Math.abs(r - _colors8[0]) < 250 - _range + 20
                 &&
-               Math.abs(g - _colors8[1]) < 250 - _range
+               Math.abs(g - _colors8[1]) < 250 - _range + 20
                 &&
-               Math.abs(b - _colors8[2]) < 250 - _range)
+               Math.abs(b - _colors8[2]) < 250 - _range + 20)
             {
                 frame.data[l*4+3]= 0;
             }
