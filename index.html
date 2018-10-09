@@ -11,7 +11,12 @@
 				background-color: #000000;
 				overflow: hidden;
 			}
-            
+            instraction{
+                display: block;
+                background-color:aqua;
+                background-size: 100% 100%;
+                margin: auto;
+            }
             canvas{
                 display: block;
                 background-size: 100% 100%;
@@ -31,6 +36,7 @@
         <div style="text-align: center;">     
             <p id= "p" style="position: absolute; left: 0; top: 0; z-index: 10; color: aliceblue">*0.1</p>
             <video id="video" style="position: absolute; top: -9999px; z-index: 1" muted autoplay playsinline>Video</video>
+            <canvas id="instraction" style="position: absolute; left: 0; top: 0; z-index: 2;"></canvas>>
             <canvas id="canvas" 
    style="position: absolute; left: 0; top: 0; z-index: 2;"></canvas>
       <!-- <canvas id="canvas2" 
@@ -55,13 +61,14 @@
 
     var _video  = _d.getElementById('video'),
         _canvas = _d.getElementById('canvas'),
+        _instract = d.getElementById('instraction'),
         _ctx    = _canvas.getContext('2d'),
         _n      = navigator,
         _w      = window,
         _scale  = window.devicePixelRatio || 1,
         _width  = 0,
         _change = 1,
-        _boolCam = false,
+        _boolClick = false,
         _height = 0,
         _tmpCtx = _d.createElement('canvas'),
         // _colors = [0, 0, 200],
@@ -95,8 +102,14 @@
     _canvas.width  = _w.innerWidth * _scale;
     _canvas.height = _w.innerHeight * _scale;
 
+    _instract.width  = _w.innerWidth * _scale;
+    _instract.height = _w.innerHeight * _scale;
+
     _canvas.style.width = _w.innerWidth + "px";
     _canvas.style.height = _w.innerHeight + "px";
+
+    _instract.style.width = _w.innerWidth + "px";
+    _instract.style.height = _w.innerHeight + "px";
 
     _ctx.scale(1,1);
     _tmpCtx.scale(1,1);
@@ -106,6 +119,14 @@
     
     
     document.getElementById('p').innerHTML = _w.devicePixelRatio + " 4ks_ " + _w.innerWidth + " " + _w.innerHeight;
+    _instract.addEventListener('click',function(event){
+        _boolClick = true;
+    },false);
+    
+    if(_boolClick){
+        
+ 
+
     var _videoPlaying= function(){
         
         var frame= '',
@@ -287,7 +308,7 @@
             col= evt.offsetX * _scale,
             frame= _ctx.getImageData(col, line, 1, 1);
             //px= [frame.data[0], frame.data[1], frame.data[2]];
-            _boolCam = true;
+
            document.getElementById('p').innerHTML = _colors;
            var px= [frame.data[0], frame.data[1], frame.data[2]];
            _colors= px;
@@ -321,22 +342,16 @@ var video = document.getElementById('video');
 var constraints = { audio:false, video:{width:{ideal:1920},height:{ideal:1080}, aspectRatrio: 1.77777776, facingMode:"environment"} }
 
 //older browsers might not implement mediaDevices
-if(_boolCam){
-   if(navigator.mediaDevices === undefined) {
+if(navigator.mediaDevices === undefined) {
   console.log("navigator.mediaDevices === undefined");
   alert("navigator.mediaDevices === undefined");
-} 
 }
-
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;// || navigator.msGetUserMedia || navigator.oGetUserMedia;
 navigator.mediaDevices.getUserMedia(constraints)
 .then(function(mediaStream) { //start the stream
   video.srcObject = mediaStream;
   video.onloadedmetadata = function(e) {
-      if(_boolCam){
-             video.play(); 
-      }
-
+    video.play();
     
     setInterval(_videoPlaying, 60);
 
@@ -357,7 +372,7 @@ video.addEventListener('canplay', function(ev){
     streaming = true;
   }
 }, false);
-  
+    }
 })(document);
             
             
