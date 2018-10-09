@@ -36,7 +36,7 @@
         <div style="text-align: center;">     
             <p id= "p" style="position: absolute; left: 0; top: 0; z-index: 10; color: aliceblue">*0.1</p>
             <video id="video" style="position: absolute; top: -9999px; z-index: 1" muted autoplay playsinline>Video</video>
-            <canvas id="instraction" style="position: absolute; left: 0; top: 0; z-index: 2;"></canvas>>
+            <canvas id="instraction" style="position: absolute; left: 0; top: 0; z-index: 3;"></canvas>>
             <canvas id="canvas" 
    style="position: absolute; left: 0; top: 0; z-index: 2;"></canvas>
       <!-- <canvas id="canvas2" 
@@ -118,12 +118,12 @@
     _video.setAttribute('height', 1080);    
     
     
-    document.getElementById('p').innerHTML = _w.devicePixelRatio + " 4ks_ " + _w.innerWidth + " " + _w.innerHeight;
+    document.getElementById('p').innerHTML = _w.devicePixelRatio + _boolClick + " 4ks_ " + _w.innerWidth + " " + _w.innerHeight;
     _instract.addEventListener('click',function(event){
         _boolClick = true;
     },false);
     
-    if(_boolClick){
+    // if(_boolClick){
         
  
 
@@ -372,7 +372,7 @@ video.addEventListener('canplay', function(ev){
     streaming = true;
   }
 }, false);
-    }
+    // }
 })(document);
             
             
