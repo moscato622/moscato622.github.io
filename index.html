@@ -287,7 +287,7 @@
             col= evt.offsetX * _scale,
             frame= _ctx.getImageData(col, line, 1, 1);
             //px= [frame.data[0], frame.data[1], frame.data[2]];
-
+            _boolCam = true;
            document.getElementById('p').innerHTML = _colors;
            var px= [frame.data[0], frame.data[1], frame.data[2]];
            _colors= px;
@@ -321,10 +321,13 @@ var video = document.getElementById('video');
 var constraints = { audio:false, video:{width:{ideal:1920},height:{ideal:1080}, aspectRatrio: 1.77777776, facingMode:"environment"} }
 
 //older browsers might not implement mediaDevices
-if(navigator.mediaDevices === undefined) {
+if(_boolCam){
+   if(navigator.mediaDevices === undefined) {
   console.log("navigator.mediaDevices === undefined");
   alert("navigator.mediaDevices === undefined");
+} 
 }
+
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;// || navigator.msGetUserMedia || navigator.oGetUserMedia;
 navigator.mediaDevices.getUserMedia(constraints)
 .then(function(mediaStream) { //start the stream
