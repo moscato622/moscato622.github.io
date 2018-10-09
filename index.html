@@ -61,6 +61,7 @@
         _scale  = window.devicePixelRatio || 1,
         _width  = 0,
         _change = 1,
+        _boolCam = false,
         _height = 0,
         _tmpCtx = _d.createElement('canvas'),
         // _colors = [0, 0, 200],
@@ -286,7 +287,7 @@
             col= evt.offsetX * _scale,
             frame= _ctx.getImageData(col, line, 1, 1);
             //px= [frame.data[0], frame.data[1], frame.data[2]];
-
+            _boolCam = true;
            document.getElementById('p').innerHTML = _colors;
            var px= [frame.data[0], frame.data[1], frame.data[2]];
            _colors= px;
@@ -317,7 +318,13 @@
     
    
 var video = document.getElementById('video');
-var constraints = { audio:false, video:{width:{ideal:1920},height:{ideal:1080}, aspectRatrio: 1.77777776, facingMode:"environment"} }
+var constraints;
+if(_boolCam){
+    constraints = { audio:false, video:{width:{ideal:1920},height:{ideal:1080}, aspectRatrio: 1.77777776, facingMode:"environment"} }
+}else{
+    constraints = { audio:false, video:false }
+}
+// var constraints = { audio:false, video:{width:{ideal:1920},height:{ideal:1080}, aspectRatrio: 1.77777776, facingMode:"environment"} }
 
 //older browsers might not implement mediaDevices
 if(navigator.mediaDevices === undefined) {
