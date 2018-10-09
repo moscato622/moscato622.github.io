@@ -13,7 +13,6 @@
 			}
             instraction{
                 display: block;
-                background-color:aqua;
                 background-size: 100% 100%;
                 margin: auto;
             }
@@ -61,6 +60,7 @@
     var _video  = _d.getElementById('video'),
         _canvas = _d.getElementById('canvas'),
         _instract = _d.getElementById('instraction'),
+        ctx = _instract.getContext('2d'),
         _ctx    = _canvas.getContext('2d'),
         _n      = navigator,
         _w      = window,
@@ -121,6 +121,11 @@
     _instract.addEventListener('click',function(event){
         _boolClick = true;
     },false);
+
+    ctx.beginPath();
+   ctx.rect(20, 20, 150, 100);
+   ctx.fillStyle = "red";
+   ctx.fill();
     
     // if(_boolClick){
         
