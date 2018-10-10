@@ -355,14 +355,15 @@ var constraints = { audio:false, video:{width:{ideal:1920},height:{ideal:1080}, 
 _instract.addEventListener('click',function(event){
         if(_boolClick){
             _boolClick = false;
+            if(navigator.mediaDevices === undefined) {
+  console.log("navigator.mediaDevices === undefined");
+  alert("navigator.mediaDevices === undefined");
         }else{
            _boolClick = true; 
         }
         
-        document.getElementById('p').innerHTML = _w.devicePixelRatio + "bool is: " +_boolClick + " .111 " + _w.innerWidth + " " + _w.innerHeight;
-        if(navigator.mediaDevices === undefined) {
-  console.log("navigator.mediaDevices === undefined");
-  alert("navigator.mediaDevices === undefined");
+        document.getElementById('p').innerHTML = _w.devicePixelRatio + "bool is: " +_boolClick + " .10" + _w.innerWidth + " " + _w.innerHeight;
+       
 }
     },false);
 
