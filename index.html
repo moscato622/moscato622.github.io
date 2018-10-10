@@ -345,7 +345,7 @@ var constraints = { audio:false, video:{width:{ideal:1920},height:{ideal:1080}, 
 //older browsers might not implement mediaDevices
 if(navigator.mediaDevices === undefined) {
   console.log("navigator.mediaDevices === undefined");
-  alert("navigator.mediaDevices === undefined");
+  alert("navigator.mediaDevices === undefined ios用户请使用safari打开");
 }
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;// || navigator.msGetUserMedia || navigator.oGetUserMedia;
 navigator.mediaDevices.getUserMedia(constraints)
