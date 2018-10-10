@@ -125,7 +125,7 @@
            _boolClick = true; 
         }
         
-        document.getElementById('p').innerHTML = _w.devicePixelRatio + "bool is: " +_boolClick + " .11 " + _w.innerWidth + " " + _w.innerHeight;
+        document.getElementById('p').innerHTML = _w.devicePixelRatio + "bool is: " +_boolClick + " .12 " + _w.innerWidth + " " + _w.innerHeight;
     },false);
 
     ctx.beginPath();
@@ -352,14 +352,16 @@ var video = document.getElementById('video');
 var constraints = { audio:false, video:{width:{ideal:1920},height:{ideal:1080}, aspectRatrio: 1.77777776, facingMode:"environment"} }
 
 //older browsers might not implement mediaDevices
+if(_boolClick){
 if(navigator.mediaDevices === undefined) {
   console.log("navigator.mediaDevices === undefined");
   alert("navigator.mediaDevices === undefined");
 }
 
 
+}
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;// || navigator.msGetUserMedia || navigator.oGetUserMedia;
-if(_boolClick){
+
 navigator.mediaDevices.getUserMedia(constraints)
 .then(function(mediaStream) { //start the stream
   video.srcObject = mediaStream;
@@ -379,7 +381,6 @@ navigator.mediaDevices.getUserMedia(constraints)
   alert("mediaDevices: " + err.name + " -> " + err.message); 
 });
 
-}
 //setup video size
 video.addEventListener('canplay', function(ev){
   if (!streaming) {
