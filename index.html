@@ -118,15 +118,15 @@
     
     
     
-    // _instract.addEventListener('click',function(event){
-    //     if(_boolClick){
-    //         _boolClick = false;
-    //     }else{
-    //        _boolClick = true; 
-    //     }
+    _instract.addEventListener('click',function(event){
+        if(_boolClick){
+            _boolClick = false;
+        }else{
+           _boolClick = true; 
+        }
         
-    //     document.getElementById('p').innerHTML = _w.devicePixelRatio + "bool is: " +_boolClick + " .12 " + _w.innerWidth + " " + _w.innerHeight;
-    // },false);
+        document.getElementById('p').innerHTML = _w.devicePixelRatio + "bool is: " +_boolClick + " .10 " + _w.innerWidth + " " + _w.innerHeight;
+    },false);
 
     ctx.beginPath();
    ctx.rect(20, 20, 150, 100);
@@ -352,22 +352,14 @@ var video = document.getElementById('video');
 var constraints = { audio:false, video:{width:{ideal:1920},height:{ideal:1080}, aspectRatrio: 1.77777776, facingMode:"environment"} }
 
 //older browsers might not implement mediaDevices
-_instract.addEventListener('click',function(event){
-        if(_boolClick){
-            _boolClick = false;
-            if(navigator.mediaDevices === undefined) {
+if(_boolClick){
+if(navigator.mediaDevices === undefined) {
   console.log("navigator.mediaDevices === undefined");
   alert("navigator.mediaDevices === undefined ios用户请使用safari打开");
-        }else{
-           _boolClick = true; 
-        }
-        
-        document.getElementById('p').innerHTML = _w.devicePixelRatio + "bool is: " +_boolClick + " .10" + _w.innerWidth + " " + _w.innerHeight;
-       
 }
-    },false);
 
 
+}
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;// || navigator.msGetUserMedia || navigator.oGetUserMedia;
 
 navigator.mediaDevices.getUserMedia(constraints)
