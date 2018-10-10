@@ -117,9 +117,15 @@
     _video.setAttribute('height', 1080);    
     
     
-    document.getElementById('p').innerHTML = _w.devicePixelRatio + _boolClick + " 4ks_ " + _w.innerWidth + " " + _w.innerHeight;
+    
     _instract.addEventListener('click',function(event){
-        _boolClick = true;
+        if(_boolClick){
+            _boolClick = false;
+        }else{
+           _boolClick = true; 
+        }
+        
+        document.getElementById('p').innerHTML = _w.devicePixelRatio + _boolClick + " 4ks_ " + _w.innerWidth + " " + _w.innerHeight;
     },false);
 
     ctx.beginPath();
