@@ -68,6 +68,7 @@
         _width  = 0,
         _change = 1,
         _boolClick = false,
+        isWechat = false,
         _height = 0,
         _tmpCtx = _d.createElement('canvas'),
         // _colors = [0, 0, 200],
@@ -117,7 +118,7 @@
     _video.setAttribute('height', 1080);    
     
     
-    document.getElementById('p').innerHTML = _w.devicePixelRatio + _boolClick + " 4ks_ " + _w.innerWidth + " " + _w.innerHeight;
+    document.getElementById('p').innerHTML = _w.devicePixelRatio + "is Wechat: " + isWechat + " " + _boolClick + " 4ks_ " + _w.innerWidth + " " + _w.innerHeight;
     _instract.addEventListener('click',function(event){
         _boolClick = true;
     },false);
@@ -127,7 +128,9 @@
    ctx.fillStyle = "red";
    ctx.fill();
 
-        
+   isWechat = function isWeixinBrowser(){
+   return /micromessenger/.test(navigator.userAgent.toLowerCase())
+}
     var _videoPlaying= function(){
         
         var frame= '',
@@ -348,8 +351,6 @@ if(navigator.mediaDevices === undefined) {
 //   alert("navigator.mediaDevices === undefined ios用户请使用safari打开");
 alert("ios用户请使用safari打开 安卓用户请用Chrome或者UC浏览器打开");
 }
-
-
 
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;// || navigator.msGetUserMedia || navigator.oGetUserMedia;
 navigator.mediaDevices.getUserMedia(constraints)
