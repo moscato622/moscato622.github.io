@@ -120,31 +120,6 @@
     document.getElementById('p').innerHTML = _w.devicePixelRatio + _boolClick + " 4ks_ " + _w.innerWidth + " " + _w.innerHeight;
     _instract.addEventListener('click',function(event){
         _boolClick = true;
-        function getMobileOperatingSystem() {
-  var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
-      // Windows Phone must come first because its UA also contains "Android"
-    if (/windows phone/i.test(userAgent)) {
-        alert("windows Phone");
-        // return "Windows Phone";
-        
-    }
-
-    if (/android/i.test(userAgent)) {
-        alert("Android Phone");
-        // return "Android";
-        
-    }
-
-    // iOS detection from: http://stackoverflow.com/a/9039885/177710
-    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        alert("IOS Phone");
-        // return "iOS";
-        
-    }
-
-    return "unknown";
-}
     },false);
 
     ctx.beginPath();
@@ -370,7 +345,8 @@ var constraints = { audio:false, video:{width:{ideal:1920},height:{ideal:1080}, 
 //older browsers might not implement mediaDevices
 if(navigator.mediaDevices === undefined) {
   console.log("navigator.mediaDevices === undefined");
-  alert("navigator.mediaDevices === undefined ios用户请使用safari打开");
+//   alert("navigator.mediaDevices === undefined ios用户请使用safari打开");
+alert("ios用户请使用safari打开 安卓用户请用Chrome或者UC浏览器打开");
 }
 
 
