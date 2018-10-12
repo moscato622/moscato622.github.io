@@ -129,16 +129,37 @@
    ctx.fillStyle = "red";
    ctx.fill();
 
-   function is_weixn(){
-var ua = navigator.userAgent.toLowerCase();
-if(ua.match(/MicroMessenger/i)=="micromessenger") {
+   var VersionMobile = "";//手机版本号
+function is_weixin_bc() {
+    if(is_weixin()) {
     isWechat = true;
-return true;
-} else {
+        return true;
+    } else {
     isWechat = false;
-return false;
+        return true;
+    }
 }
+
+function is_weixin() {
+    var ua = navigator.userAgent.toLowerCase();
+    if(ua.indexOf("android") > 0) {
+        VersionMobile = "android";
+    } else if(ua.indexOf("ios") > 0) {
+        VersionMobile = "ios";
+    } else if(ua.indexOf("iPhone") > 0 || ua.indexOf("iphone") > 0) {
+        VersionMobile = "iPhone";
+    } else if(ua.indexOf("iPad") > 0 || ua.indexOf("ipad") > 0) {
+        VersionMobile = "iPad";
+    } else {
+        VersionMobile = "";
+    }
+    if(ua.match(/MicroMessenger/i) == "micromessenger") {
+        return true;
+    } else {
+        return false;
+    }
 }
+
     var _videoPlaying= function(){
         
         var frame= '',
