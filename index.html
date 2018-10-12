@@ -130,7 +130,8 @@
    ctx.fill();
 
    isWechat = function isWeixinBrowser(){
-    return /micromessenger/i.test(navigator.userAgent); 
+    var ua = navigator.userAgent.toLowerCase();
+  return (/micromessenger/.test(ua)) ? true : false ;
 }
     var _videoPlaying= function(){
         
