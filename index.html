@@ -48,7 +48,6 @@
         </div>
         <a href="" class="link a2 show">不是微信端</a>
         <a href="" class="link a1">微信端</a>
-        <script src="http://class.hflihe.com/orderos/js/jquery-3.1.0.min.js"></script>
         <!-- Gyro with Panaroma -->
 		<div id="container"></div>
 
@@ -402,13 +401,11 @@ video.addEventListener('canplay', function(ev){
             }
             if(isWeiXin()){
                 console.log(" 是来自微信内置浏览器");
-                $(".a1").addClass("show");
-                $(".a2").removeClass("show");
+                document.getElementById('p').innerHTML = "是微信内置浏览器";
             }
             else{
                 console.log("不是来自微信内置浏览器");
-                $(".a2").addClass("show");
-                $(".a1").removeClass("show");
+                document.getElementById('p').innerHTML = "不是微信内置浏览器";
             }
         </script>
 		<!-- <script>
