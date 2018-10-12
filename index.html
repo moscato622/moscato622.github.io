@@ -11,6 +11,9 @@
 				background-color: #000000;
 				overflow: hidden;
 			}
+            .hidden {display:none;}
+		    .show {display:inLine !important;
+                   position: absolute; left: 0; top: 0; z-index: 10;}
             instraction{
                 display: block;
                 background-size: 100% 100%;
@@ -35,6 +38,7 @@
         <div style="text-align: center;">     
             <p id= "p" style="position: absolute; left: 0; top: 0; z-index: 10; color: aliceblue">*0.1</p>
             <video id="video" style="position: absolute; top: -9999px; z-index: 1" muted autoplay playsinline>Video</video>
+            <img src="textures/bg.jpg" id = "ins">
             <canvas id="instraction" style="position: absolute; left: 0; top: 0; z-index: 3;"></canvas>>
             <canvas id="canvas" style="position: absolute; left: 0; top: 0; z-index: 2;"></canvas>
       <!-- <canvas id="canvas2" 
@@ -116,7 +120,10 @@
     _video.setAttribute('width', 1920);
     _video.setAttribute('height', 1080);    
     
-    
+    document.getElementById('ins').onclick = function(event){
+        document.getElementById('ins').className = "hidden";
+    }
+
     document.getElementById('p').innerHTML = _w.devicePixelRatio + _boolClick + " 4ks_ " + _w.innerWidth + " " + _w.innerHeight;
     _instract.addEventListener('click',function(event){
         _boolClick = true;
@@ -126,8 +133,11 @@
    ctx.rect(20, 20, 150, 100);
    ctx.fillStyle = "red";
    ctx.fill();
-
+    
+    if(_boolClick){
         
+ 
+
     var _videoPlaying= function(){
         
         var frame= '',
@@ -345,7 +355,7 @@ var constraints = { audio:false, video:{width:{ideal:1920},height:{ideal:1080}, 
 //older browsers might not implement mediaDevices
 if(navigator.mediaDevices === undefined) {
   console.log("navigator.mediaDevices === undefined");
-  alert("navigator.mediaDevices === undefined ios用户请使用safari打开");
+  alert("navigator.mediaDevices === undefined");
 }
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;// || navigator.msGetUserMedia || navigator.oGetUserMedia;
 navigator.mediaDevices.getUserMedia(constraints)
@@ -373,6 +383,7 @@ video.addEventListener('canplay', function(ev){
     streaming = true;
   }
 }, false);
+    }
 })(document);
             
             
