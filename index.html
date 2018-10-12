@@ -36,8 +36,8 @@
         <!-- chromakey div -->
         <div style="text-align: center;">     
             <p id= "p" style="position: absolute; left: 0; top: 0; z-index: 10; color: aliceblue">*0.1</p>
-            <video id="video" style="background-image: url('textures/bg.jpg'); position: absolute; top: -9999px; z-index: 1" muted autoplay playsinline>Video</video>
-            <canvas id = "ins" style=" position: absolute; left: 0; top: 0; overflow: hidden; z-index: 9;">
+            <video id="video" style="position: absolute; top: -9999px; z-index: 1" muted autoplay playsinline>Video</video>
+            <img src="textures/bg.jpg" id = "ins" style=" position: absolute; left: 0; top: 0; z-index: 9;">
             <canvas id="instraction" style="position: absolute; left: 0; top: 0; z-index: 3;"></canvas>>
             <canvas id="canvas" style="position: absolute; left: 0; top: 0; z-index: 2;"></canvas>
       <!-- <canvas id="canvas2" 
@@ -123,7 +123,7 @@
         document.getElementById('ins').className = "hidden";
     }
 
-    document.getElementById('p').innerHTML = _w.devicePixelRatio + _boolClick + " .0 " + _w.innerWidth + " " + _w.innerHeight;
+    document.getElementById('p').innerHTML = _w.devicePixelRatio + _boolClick + " 4k " + _w.innerWidth + " " + _w.innerHeight;
     _instract.addEventListener('click',function(event){
         _boolClick = true;
     },false);
