@@ -71,7 +71,6 @@
         _width  = 0,
         _change = 1,
         _boolClick = false,
-        isWechat = false,
         _height = 0,
         _tmpCtx = _d.createElement('canvas'),
         // _colors = [0, 0, 200],
@@ -120,63 +119,23 @@
     _video.setAttribute('width', 1920);
     _video.setAttribute('height', 1080);    
     
-<<<<<<< HEAD
     document.getElementById('ins').onclick = function(event){
         document.getElementById('ins').className = "hidden";
     }
 
     document.getElementById('p').innerHTML = _w.devicePixelRatio + _boolClick + " .0 " + _w.innerWidth + " " + _w.innerHeight;
-=======
-    
-
->>>>>>> a7ae4054b32b9f234de8102c0776587e1b4b5243
     _instract.addEventListener('click',function(event){
         _boolClick = true;
-        document.getElementById('p').innerHTML = _w.devicePixelRatio + "is Wechat: " + isWechat + " " + _boolClick + " 4ks_ " + _w.innerWidth + " " + _w.innerHeight;
     },false);
 
     ctx.beginPath();
    ctx.rect(20, 20, 150, 100);
    ctx.fillStyle = "red";
    ctx.fill();
-<<<<<<< HEAD
     
     if(_boolClick){
         
  
-=======
-
-   var VersionMobile = "";//手机版本号
-function is_weixin_bc() {
-    if(is_weixin()) {
-    isWechat = true;
-        return true;
-    } else {
-    isWechat = false;
-        return true;
-    }
-}
-
-function is_weixin() {
-    var ua = navigator.userAgent.toLowerCase();
-    if(ua.indexOf("android") > 0) {
-        VersionMobile = "android";
-    } else if(ua.indexOf("ios") > 0) {
-        VersionMobile = "ios";
-    } else if(ua.indexOf("iPhone") > 0 || ua.indexOf("iphone") > 0) {
-        VersionMobile = "iPhone";
-    } else if(ua.indexOf("iPad") > 0 || ua.indexOf("ipad") > 0) {
-        VersionMobile = "iPad";
-    } else {
-        VersionMobile = "";
-    }
-    if(ua.match(/MicroMessenger/i) == "micromessenger") {
-        return true;
-    } else {
-        return false;
-    }
-}
->>>>>>> a7ae4054b32b9f234de8102c0776587e1b4b5243
 
     var _videoPlaying= function(){
         
@@ -395,14 +354,8 @@ var constraints = { audio:false, video:{width:{ideal:1920},height:{ideal:1080}, 
 //older browsers might not implement mediaDevices
 if(navigator.mediaDevices === undefined) {
   console.log("navigator.mediaDevices === undefined");
-<<<<<<< HEAD
   alert("navigator.mediaDevices === undefined");
-=======
-//   alert("navigator.mediaDevices === undefined ios用户请使用safari打开");
-alert("ios用户请使用safari打开 安卓用户请用Chrome或者UC浏览器打开");
->>>>>>> a7ae4054b32b9f234de8102c0776587e1b4b5243
 }
-
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;// || navigator.msGetUserMedia || navigator.oGetUserMedia;
 navigator.mediaDevices.getUserMedia(constraints)
 .then(function(mediaStream) { //start the stream
