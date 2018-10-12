@@ -118,9 +118,10 @@
     _video.setAttribute('height', 1080);    
     
     
-    document.getElementById('p').innerHTML = _w.devicePixelRatio + "is Wechat: " + isWechat + " " + _boolClick + " 4ks_ " + _w.innerWidth + " " + _w.innerHeight;
+
     _instract.addEventListener('click',function(event){
         _boolClick = true;
+        document.getElementById('p').innerHTML = _w.devicePixelRatio + "is Wechat: " + isWechat + " " + _boolClick + " 4ks_ " + _w.innerWidth + " " + _w.innerHeight;
     },false);
 
     ctx.beginPath();
