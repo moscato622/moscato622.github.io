@@ -15,7 +15,7 @@
             .show{display: block;}
             .hidden {display:none;}
 		    /* .show {display:inLine !important;} */
-            instraction{
+            .instraction{
                 display: block;
                 background-size: 100% 100%;
                 margin: auto;
@@ -75,7 +75,7 @@
         _change = 1,
         _boolClick = false,
         _height = 0,
-        _tmpCtx = _d.createElement('canvas'),
+        _tmpCtx = _d.querySelector("#glCanvas");
         // _colors = [0, 0, 200],
         // _colors = [243, 45, 32],
         // _colors2 = [0, 208, 131],
@@ -102,7 +102,7 @@
     _tmpCtx.style.width = _w.innerWidth + "px";
     _tmpCtx.style.height = _w.innerHeight + "px";
 
-    _tmpCtx= _tmpCtx.getContext('2d');
+    _tmpCtx= _tmpCtx.getContext('webgl');
     
     _canvas.width  = _w.innerWidth * _scale;
     _canvas.height = _w.innerHeight * _scale;
@@ -356,7 +356,7 @@ if(navigator.mediaDevices === undefined) {
   console.log("navigator.mediaDevices === undefined");
   alert("navigator.mediaDevices === undefined");
 }
-navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;// || navigator.msGetUserMedia || navigator.oGetUserMedia;
+navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
 navigator.mediaDevices.getUserMedia(constraints)
 .then(function(mediaStream) { //start the stream
   video.srcObject = mediaStream;
