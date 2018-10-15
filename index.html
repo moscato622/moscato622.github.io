@@ -75,7 +75,7 @@
         _change = 1,
         _boolClick = false,
         _height = 0,
-        _tmpCtx = _d.querySelector("#glCanvas");
+        _tmpCtx = _d.createElement('canvas'),
         // _colors = [0, 0, 200],
         // _colors = [243, 45, 32],
         // _colors2 = [0, 208, 131],
@@ -102,7 +102,7 @@
     _tmpCtx.style.width = _w.innerWidth + "px";
     _tmpCtx.style.height = _w.innerHeight + "px";
 
-    _tmpCtx= _tmpCtx.getContext('webgl');
+    _tmpCtx= _tmpCtx.getContext('2d');
     
     _canvas.width  = _w.innerWidth * _scale;
     _canvas.height = _w.innerHeight * _scale;
