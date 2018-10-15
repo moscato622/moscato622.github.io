@@ -122,9 +122,7 @@
     _video.setAttribute('width', 1920);
     _video.setAttribute('height', 1080);    
     
-    document.getElementById('ins').onclick = function(event){
-        document.getElementById('ins').className = "hidden";
-    }
+
 
     document.getElementById('p').innerHTML = _w.devicePixelRatio + _boolClick + " 4k " + _w.innerWidth + " " + _w.innerHeight;
     _instract.addEventListener('click',function(event){
@@ -405,6 +403,9 @@ video.addEventListener('canplay', function(ev){
             }
             else{
                 console.log("不是来自微信内置浏览器");
+                document.getElementById('ins').onclick = function(event){
+                document.getElementById('ins').className = "hidden";
+                      }
                 document.getElementById('p').innerHTML = "不是微信内置浏览器";
             }
         </script>
