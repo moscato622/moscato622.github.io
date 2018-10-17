@@ -166,7 +166,7 @@
                 &&
                Math.abs(b - _colors[2]) < 250 - _range)
             {
-                frame.data[l*4+3]= 0;
+                frame.data[l*4+3]= (r - _colors[0] + g - _colors[1] + b - _colors[2])/3 - (250 - _range);
             }          
 
             if(Math.abs(r - _colors2[0]) < 250 - _range
@@ -322,7 +322,7 @@
            _PpPosY = evt.offsetY;
 
             ctx.beginPath();
-            ctx.rect(_PpPosX, _PpPosY, 150, 100);
+           ctx.rect(_PpPosX, _PpPosY, 150, 100);
            ctx.fillStyle = "red";
            ctx.fill();
            document.getElementById('p').innerHTML = _colors;
