@@ -75,6 +75,8 @@
         _change = 1,
         _boolClick = false,
         _height = 0,
+        _PpPosX = 20,
+        _PpPosY = 20,
         _tmpCtx = _d.createElement('canvas'),
         // _colors = [0, 0, 200],
         // _colors = [243, 45, 32],
@@ -130,7 +132,7 @@
     },false);
 
     ctx.beginPath();
-   ctx.rect(20, 20, 150, 100);
+   ctx.rect(_PpPosX, _PpPosY, 150, 100);
    ctx.fillStyle = "red";
    ctx.fill();
     
@@ -316,7 +318,13 @@
             col= evt.offsetX * _scale,
             frame= _ctx.getImageData(col, line, 1, 1);
             //px= [frame.data[0], frame.data[1], frame.data[2]];
+           _PpPosX = evt.offsetX;
+           _PpPosY = evt.offsetY;
 
+            ctx.beginPath();
+            ctx.rect(_PpPosX, _PpPosY, 150, 100);
+           ctx.fillStyle = "red";
+           ctx.fill();
            document.getElementById('p').innerHTML = _colors;
            var px= [frame.data[0], frame.data[1], frame.data[2]];
            _colors= px;
