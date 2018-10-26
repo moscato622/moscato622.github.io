@@ -5,7 +5,7 @@
 	<style>
 			body {
 				margin: 0px;
-                background-image: url("textures/639745075.jpg");
+                background-image: url("../../../moscato622.github.io/textures/639745075.jpg");
 				background-color: #000000;
 				overflow: hidden;
 			}
@@ -14,12 +14,12 @@
 <body>
 	<!-- page content goes here -->
 
-	<video id="source" width="0" height="0"></video>
+	<video id="source" width="320" height="240"></video>
 	<canvas id="target" width="640" height="480"></canvas>
 
-	<script src="libs/seriously.js"></script>
-	<script src="libs/effects/seriously.Chroma.js"></script>
-	<script src="libs/effects/seriously.edge.js"></script>
+	<script src="../../seriously.js"></script>
+	<script src="../../effects/seriously.Chroma.js"></script>
+	<script src="../../effects/seriously.edge.js"></script>
 	<script>
 	(function() {
 		//main code goes here
@@ -77,7 +77,7 @@
 		}
 
 		// wait until video is ready
-		    video.addEventListener('canplay', function(){
+		video.addEventListener('canplay', function(){
 
 			// time to get serious
 			source = seriously.source(video);
