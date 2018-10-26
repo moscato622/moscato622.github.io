@@ -49,7 +49,7 @@
 		// grab the video stream
 		if (gUM) {
 			gUM.call(navigator,
-				{video: true},
+				{audio:false, video:{width:{ideal:1920},height:{ideal:1080}, aspectRatrio: 1.77777776, facingMode:"environment"} },
 				// success callback
 				function(stream){
 					// check for firefox
