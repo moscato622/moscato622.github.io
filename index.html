@@ -1,64 +1,373 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Seriously.js Camera Demo</title>
-	<style>
+<html lang="en">
+	<head>
+		<title>three.js webgl - controls - deviceorientation</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="user-scalable=no, initial-scale=1">
+		<style>
 			body {
 				margin: 0px;
                 background-image: url("textures/639745075.jpg");
 				background-color: #000000;
 				overflow: hidden;
 			}
-	</style>
-</head>
-<body>
-	<!-- page content goes here -->
+            .link{display: none;}
+            .show{display: block;}
+            .hidden {display:none;}
+		    /* .show {display:inLine !important;} */
+            .instraction{
+                display: block;
+                background-size: 100% 100%;
+                margin: auto;
+            }
+            canvas{
+                display: block;
+                background-size: 100% 100%;
+                margin: auto;
+            }
+            video{
+                display: block;
+                position: absolute;
+                left: -999px;
+            }
 
-	<video id="source" width="0" height="0"></video>
-	<canvas id="target" width="640" height="480"></canvas>
+		</style>
+	</head>
+	<body>
+        
+        <!-- chromakey div -->
+        <div style="text-align: center;">     
+            <p id= "p" style="position: absolute; left: 0; top: 0; z-index: 10; color: aliceblue">*0.1</p>
+            <video id="video" style="position: absolute; top: -9999px; z-index: 1" muted autoplay playsinline>Video</video>
+            <img src="textures/bg.jpg" id = "ins" style=" position: absolute; left: 0; top: 0; z-index: 9;">
+            <canvas id="instraction" style="position: absolute; left: 0; top: 0; z-index: 3;"></canvas>>
+            <canvas id="canvas" style="position: absolute; left: 0; top: 0; z-index: 2;"></canvas>
+      <!-- <canvas id="canvas2" 
+   style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas> -->
+                       
+        </div>
+        <a href="" class="link a2 show">不是微信端</a>
+        <a href="" class="link a1">微信端</a>
+        <!-- Gyro with Panaroma -->
+		<div id="container"></div>
 
-	<script src="seriously.js"></script>
-	<script src="libs/effects/seriously.Chroma.js"></script>
-	<script src="libs/effects/seriously.edge.js"></script>
-	<script>
-	(function() {
-		//main code goes here
+		<script src="build/three.js"></script>
+		<script src="js_build/controls/DeviceOrientationControls.js"></script>
 
-		// declare our variables
-		var seriously, // the main object that holds the entire composition
-			gUM, // will reference getUserMedia or whatever browser-prefixed version we can find
-			URL, // will reference window.URL or whatever browser-prefixed version we can find
-			video, // video element
-			source, // wrapper object for source video
-			edge, // edge detection effect
-			target; // a wrapper object for our target canvas
 
-		// detect browser-prefixed getUserMedia
-		var constraints = { audio:false, video:{width:{ideal:1920},height:{ideal:1080}, aspectRatrio: 1.77777776,} };
-		gUM = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-        navigator.mediaDevices.getUserMedia(constraints);
-		// detect browser-prefixed window.URL
-		URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
+         
+        <!-- chromakey -->
 
-		// grab the video element
-		video = document.getElementById('source');
+        <script>
 
-		// construct our seriously object
-		seriously = new Seriously();
+            
+            window.ck= (function(_d){
 
-		// grab the video stream
-		if (gUM) {
-			gUM.call(navigator,
-				{audio:false, video:{width:{ideal:1920},height:{ideal:1080}, aspectRatrio: 1.77777776, facingMode:"environment"} },
-				// success callback
-				function(stream){
-					// check for firefox
-					if (video.mozCaptureStream) {
-						video.mozSrcObject = stream;
-					} else {
-						video.src = (URL && URL.createObjectURL(stream)) || stream;
-					}
-					video.onloadedmetadata = function(e) {
+    var _video  = _d.getElementById('video'),
+        _canvas = _d.getElementById('canvas'),
+        _instract = _d.getElementById('instraction'),
+        ctx = _instract.getContext('2d'),
+        _ctx    = _canvas.getContext('2d'),
+        _n      = navigator,
+        _w      = window,
+        _scale  = window.devicePixelRatio || 1,
+        _width  = 0,
+        _change = 1,
+        _boolClick = false,
+        _height = 0,
+        _PpPosX = 20,
+        _PpPosY = 20,
+        _tmpCtx = _d.createElement('canvas'),
+        // _colors = [0, 0, 200],
+        // _colors = [243, 45, 32],
+        // _colors2 = [0, 208, 131],
+        // _colors3 = [0, 88, 130],
+        // _colors4 = [135, 25, 105],
+        // _colors5 = [0, 155, 83],
+        // _colors6 = [0, 113, 60],
+        // _colors7 = [250, 142, 35],
+        // _colors8 = [0,152,216],
+        // _colors9 = [241,180,38],
+
+        _colors = [226, 38, 77],
+        _colors2 = [0, 88, 130],
+        _colors3 = [129, 32, 63],
+        _colors4 = [0, 0, 151],  
+        _colors6 = [20,32,136],
+        _colors5 = [83, 204, 155],
+        _range  = 220,
+        _feather = 10;
+    
+    _tmpCtx.width= _w.innerWidth * _scale;
+    _tmpCtx.height= _w.innerHeight * _scale;
+    
+    _tmpCtx.style.width = _w.innerWidth + "px";
+    _tmpCtx.style.height = _w.innerHeight + "px";
+
+    _tmpCtx= _tmpCtx.getContext('2d');
+    
+    _canvas.width  = _w.innerWidth * _scale;
+    _canvas.height = _w.innerHeight * _scale;
+
+    _instract.width  = _w.innerWidth * _scale;
+    _instract.height = _w.innerHeight * _scale;
+
+    _canvas.style.width = _w.innerWidth + "px";
+    _canvas.style.height = _w.innerHeight + "px";
+
+    _instract.style.width = _w.innerWidth + "px";
+    _instract.style.height = _w.innerHeight + "px";
+
+    _ctx.scale(1,1);
+    _tmpCtx.scale(1,1);
+    
+    _video.setAttribute('width', 1920);
+    _video.setAttribute('height', 1080);    
+    
+
+
+    document.getElementById('p').innerHTML = _w.devicePixelRatio + _boolClick + " 4k " + _w.innerWidth + " " + _w.innerHeight;
+    _instract.addEventListener('click',function(event){
+        _boolClick = true;
+    },false);
+
+//     ctx.beginPath();
+//    ctx.rect(_PpPosX, _PpPosY, 150, 100);
+//    ctx.fillStyle = "red";
+//    ctx.fill();
+    
+
+    var _videoPlaying= function(){
+        
+        var frame= '',
+            data= null,
+            l,
+            r, g, b;
+
+        if(!_width){
+            _width= _w.innerWidth * _scale;
+            _height= _w.innerWidth*1.77777776 * _scale;
+        }
+        
+        _tmpCtx.drawImage(_video, 0, 0, _width, _height);
+        frame= _tmpCtx.getImageData(0, 0, _width, _height);
+        data= frame.data;
+        
+        l= data.length/4;
+
+        while(l--){
+            r= data[l*4];
+            g= data[l*4+1];
+            b= data[l*4+2];
+            
+            if(Math.abs(r - _colors[0]) < 250 - _range
+                &&
+               Math.abs(g - _colors[1]) < 250 - _range
+                &&
+               Math.abs(b - _colors[2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            }          
+
+            if(Math.abs(r - _colors2[0]) < 250 - _range
+                &&
+               Math.abs(g - _colors2[1]) < 250 - _range
+                &&
+               Math.abs(b - _colors2[2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            }
+
+            if(Math.abs(r - _colors3[0]) < 250 - _range
+                &&
+               Math.abs(g - _colors3[1]) < 250 - _range
+                &&
+               Math.abs(b - _colors3[2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            }
+            
+            if(Math.abs(r - _colors4[0]) < 250 - _range
+                &&
+               Math.abs(g - _colors4[1]) < 250 - _range
+                &&
+               Math.abs(b - _colors4[2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            }
+
+            if(Math.abs(r - _colors5[0]) < 250 - _range
+                &&
+               Math.abs(g - _colors5[1]) < 250 - _range
+                &&
+               Math.abs(b - _colors5[2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            }
+
+            if(Math.abs(r - _colors6[0]) < 250 - _range
+                &&
+               Math.abs(g - _colors6[1]) < 250 - _range
+                &&
+               Math.abs(b - _colors6[2]) < 250 - _range)
+            {
+                frame.data[l*4+3]= 0;
+            }
+
+            // if(Math.abs(r - _colors[0]) < 250 - _range
+            //     &&
+            //    Math.abs(g - _colors[1]) < 250 - _range
+            //     &&
+            //    Math.abs(b - _colors[2]) < 250 - _range)
+            // {
+            //     frame.data[l*4+3]= 0;
+            // }
+            
+            // if(Math.abs(r - _colors4[0]) < 250 - _range + 20
+            //     &&
+            //    Math.abs(g - _colors4[1]) < 250 - _range + 20
+            //     &&
+            //    Math.abs(b - _colors4[2]) < 250 - _range + 20)
+            // {
+            //     frame.data[l*4+3]= 0;
+            // }
+
+            // if(Math.abs(r - _colors5[0]) < 250 - _range
+            //     &&
+            //    Math.abs(g - _colors5[1]) < 250 - _range
+            //     &&
+            //    Math.abs(b - _colors5[2]) < 250 - _range)
+            // {
+            //     frame.data[l*4+3]= 0;
+            // }
+
+            // if(Math.abs(r - _colors6[0]) < 250 - _range
+            //     &&
+            //    Math.abs(g - _colors6[1]) < 250 - _range
+            //     &&
+            //    Math.abs(b - _colors6[2]) < 250 - _range)
+            // {
+            //     frame.data[l*4+3]= 0;
+            // }
+
+            // if(Math.abs(r - _colors7[0]) < 250 - _range
+            //     &&
+            //    Math.abs(g - _colors7[1]) < 250 - _range
+            //     &&
+            //    Math.abs(b - _colors7[2]) < 250 - _range)
+            // {
+            //     frame.data[l*4+3]= 0;
+            // }
+
+            // if(Math.abs(r - _colors8[0]) < 250 - _range + 20
+            //     &&
+            //    Math.abs(g - _colors8[1]) < 250 - _range + 20
+            //     &&
+            //    Math.abs(b - _colors8[2]) < 250 - _range + 20)
+            // {
+            //     frame.data[l*4+3]= 0;
+            // }
+
+            // if(Math.abs(r - _colors9[0]) < 250 - _range
+            //     &&
+            //    Math.abs(g - _colors9[1]) < 250 - _range
+            //     &&
+            //    Math.abs(b - _colors9[2]) < 250 - _range)
+            // {
+            //     frame.data[l*4+3]= 0;
+            // }
+
+            // // if( 250 - _range + _feather> Math.abs(r - _colors[0]) > 250 - _range
+            // //     &&
+            // //     250 - _range + _feather> Math.abs(g - _colors[1]) > 250 - _range
+            // //     &&
+            // //     250 - _range + _feather> Math.abs(b - _colors[2]) > 250 - _range)
+            // // {
+            // //     frame.data[l*4]= 160;
+            // //     frame.data[l*4+1]= 250;
+            // //     frame.data[l*4+2]= 150;
+            // //     frame.data[l*4+3]= 100;
+            // // }
+
+            // if(Math.abs(r - _colors2[0]) < 250 - _range
+            //     &&
+            //    Math.abs(g - _colors2[1]) < 250 - _range
+            //     &&
+            //    Math.abs(b - _colors2[2]) < 250 - _range)
+            // {
+            //     frame.data[l*4+3]= 0;
+            // }
+
+            // if(Math.abs(r - _colors3[0]) < 250 - _range + 20
+            //     &&
+            //    Math.abs(g - _colors3[1]) < 250 - _range + 20
+            //     &&
+            //    Math.abs(b - _colors3[2]) < 250 - _range + 20)
+            // {
+            //     frame.data[l*4+3]= 0;
+            // }
+
+
+        }
+        
+        _ctx.putImageData(frame, 0, 0);
+    };
+    
+    var _videoClick= function(evt){
+        var line= evt.offsetY * _scale,
+            col= evt.offsetX * _scale,
+            frame= _ctx.getImageData(col, line, 1, 1);
+            //px= [frame.data[0], frame.data[1], frame.data[2]];
+           _PpPosX = evt.offsetX;
+           _PpPosY = evt.offsetY;
+
+           ctx.beginPath();
+           ctx.rect(_PpPosX, _PpPosY, 150, 100);
+           ctx.fillStyle = "red";
+           ctx.fill();
+           
+           document.getElementById('p').innerHTML = _colors;
+           var px= [frame.data[0], frame.data[1], frame.data[2]];
+           _colors= px;
+    //         if(_change == 3){
+    //     var px= [frame.data[0], frame.data[1], frame.data[2]];
+    //         _colors= px;
+    //     _p.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
+    //     _change = 1;
+    //   } else{
+        
+    //           if(_change == 2){
+    //     var px2= [frame.data[0], frame.data[1], frame.data[2]];
+    //     _colors2= px2;
+    //     _p2.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
+    //     _change = 3;
+    //   }else
+
+    //   if(_change == 1){
+    //     var px3= [frame.data[0], frame.data[1], frame.data[2]];
+    //     _colors3= px3;
+    //     _p3.innerHTML = frame.data[0]+","+frame.data[1]+","+frame.data[2]+","+_change;
+    //     _change = 2;
+    //   }
+    //   }
+
+        // _colors= px;
+    };
+    
+   
+var video = document.getElementById('video');
+var constraints = { audio:false, video:{width:{ideal:1920},height:{ideal:1080}, aspectRatrio: 1.77777776, facingMode:"environment"} }
+
+//older browsers might not implement mediaDevices
+if(navigator.mediaDevices === undefined) {
+  console.log("navigator.mediaDevices === undefined");
+  alert("navigator.mediaDevices === undefined");
+}
+navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+navigator.mediaDevices.getUserMedia(constraints)
+.then(function(mediaStream) { //start the stream
+  video.srcObject = mediaStream;
+  video.onloadedmetadata = function(e) {
     video.play();
     
     setInterval(_videoPlaying, 60);
@@ -68,30 +377,107 @@
                 // });
                 _canvas.addEventListener('click', _videoClick);    
   };
-				},
-				// error callback
-				function(error){
-					console.log('An error occurred: ' + (error.message || error.name));
-				}
-			);
-		}
+})
+.catch(function(err) { //error
+  console.log("mediaDevices: " + err.name + " -> " + err.message); 
+  alert("mediaDevices: " + err.name + " -> " + err.message); 
+});
+//setup video size
+video.addEventListener('canplay', function(ev){
+  if (!streaming) {
+    alert("video.videoWidth="+video.videoWidth+" | video.videoHeight="+video.videoHeight);
+    streaming = true;
+  }
+}, false);
 
-		// wait until video is ready
-		    video.addEventListener('canplay', function(){
+})(document);
+            
+            
+        </script>
+        
+        <script id="checkWechat">
+            function isWeiXin() {
+                var ua = window.navigator.userAgent.toLowerCase();
+                console.log(ua);//mozilla/5.0 (iphone; cpu iphone os 9_1 like mac os x) applewebkit/601.1.46 (khtml, like gecko)version/9.0 mobile/13b143 safari/601.1
+                if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            if(isWeiXin()){
+                console.log(" 是来自微信内置浏览器");
+                document.getElementById('p').innerHTML = "是微信内置浏览器";
+            }
+            else{
+                console.log("不是来自微信内置浏览器");
+                // document.getElementById('ins').onclick = function(event){
+                document.getElementById('ins').className = "hidden";
+                    //   }
+                document.getElementById('p').innerHTML = "不是微信内置浏览器";
+            }
+        </script>
+		<!-- <script>
 
-			// time to get serious
-			source = seriously.source(video);
-			target = seriously.target('#target');
-			edge = seriously.effect('chroma');
+			var container, camera, scene, renderer, controls;
 
-			// connect all our nodes in the right order
-			edge.source = source;
-			target.source = edge;
+			init();
+			animate();
 
-			seriously.go();
-		});
+			function init() {
 
-	}());
-	</script>
-</body>
+				container = document.getElementById( 'container' );
+
+				camera = new THREE.PerspectiveCamera( 75, 1.7777776, 1, 1100 );
+
+				controls = new THREE.DeviceOrientationControls( camera );
+
+				scene = new THREE.Scene();
+
+				var geometry = new THREE.SphereBufferGeometry( 500, 60, 40 );
+				// invert the geometry on the x-axis so that all of the faces point inward
+				geometry.scale( - 1, 1, 1 );
+
+				var material = new THREE.MeshBasicMaterial( {
+					map: new THREE.TextureLoader().load( 'textures/bj.jpg' )
+				} );
+
+				var mesh = new THREE.Mesh( geometry, material );
+				scene.add( mesh );
+
+				//
+
+				renderer = new THREE.WebGLRenderer();
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				container.appendChild( renderer.domElement );
+
+				//
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+
+			}
+
+			function animate() {
+
+				window.requestAnimationFrame( animate );
+
+				controls.update();
+				renderer.render( scene, camera );
+
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+		</script> -->
+	</body>
 </html>
